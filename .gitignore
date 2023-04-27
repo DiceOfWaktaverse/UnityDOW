@@ -1,0 +1,12 @@
+Library/*
+Temp/*
+obj/*
+*.csproj
+*.sin
+.vs/*
+.svn/*
+UnityDOW.sln
+Packages/packages-lock.json
+Assets/Test
+Assets/Test.meta
+Assets/Test/*
