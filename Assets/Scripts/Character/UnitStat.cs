@@ -8,10 +8,10 @@ namespace DOW
     {
         START = 0,
 
-        BASE = START,       //Base Ä«µå ´É·ÂÄ¡
-        ADD,                //+ Áõ°¡ ¼öÄ¡
-        RATIO,              //% Áõ°¡ ¼öÄ¡
-        TOTAL,              //ÃÖÁ¾ °è»êµÈ ½ºÅİ Ä«Å×°í¸®
+        BASE = START,       //Base ì¹´ë“œ ëŠ¥ë ¥ì¹˜
+        ADD,                //+ ì¦ê°€ ìˆ˜ì¹˜
+        RATIO,              //% ì¦ê°€ ìˆ˜ì¹˜
+        TOTAL,              //ìµœì¢… ê³„ì‚°ëœ ìŠ¤í…Ÿ ì¹´í…Œê³ ë¦¬
 
         MAX
     }
@@ -28,12 +28,12 @@ namespace DOW
     }
     public abstract class UnitStat
     {
-        //ÆÛ¼¾Æ® ´É·ÂÄ¡ Áõ°¡¸¦ ¾î¶² ºñÀ²·Î º¸°üÇÏ°í ÄÁ¹öÆÃ ÇÒÁö ¼³Á¤.
+        //í¼ì„¼íŠ¸ ëŠ¥ë ¥ì¹˜ ì¦ê°€ë¥¼ ì–´ë–¤ ë¹„ìœ¨ë¡œ ë³´ê´€í•˜ê³  ì»¨ë²„íŒ… í• ì§€ ì„¤ì •.
         protected readonly float CONVERT_FLOAT = 0.01f;
         protected Dictionary<eStatType, Dictionary<eStatCategory, float>> Stat { get; set; } = null;
         protected Dictionary<eStatType, bool> StatDirty { get; set; } = null;
 
-        #region ÃÊ±âÈ­
+        #region ì´ˆê¸°í™”
         public bool Initialze()
         {
             if (Stat == null)
@@ -51,9 +51,9 @@ namespace DOW
 
             return true;
         }
-        //»ç¿ë ½ºÅİ °áÁ¤
+        //ì‚¬ìš© ìŠ¤í…Ÿ ê²°ì •
         protected abstract void InitialzeStat();
-        //½ºÅİ ÃÊ±âÈ­
+        //ìŠ¤í…Ÿ ì´ˆê¸°í™”
         protected virtual void SetStat()
         {
             foreach(var current in StatDirty)
@@ -68,7 +68,7 @@ namespace DOW
             }
         }
         #endregion
-        #region Áõ/°¨
+        #region ì¦/ê°
         public void IncreaseStat(eStatCategory category, eStatType type, float stat)
         {
             if (Stat == null || !Stat.ContainsKey(type))
@@ -92,7 +92,7 @@ namespace DOW
             SetDirty(type, true);
         }
         #endregion
-        #region ½ºÅİ °¡Á®¿À±â
+        #region ìŠ¤í…Ÿ ê°€ì ¸ì˜¤ê¸°
         protected float GetStat(eStatCategory category, eStatType type)
         {
             if (Stat == null || !Stat.ContainsKey(type))
@@ -103,7 +103,7 @@ namespace DOW
 
             return Stat[type][category];
         }
-        //¿ÜºÎ´Â ¾Æ¸¶ ÅäÅ»½ºÅİ¸¸ »ç¿ëÇÒ °ÍÀ¸·Î º¸ÀÓ
+        //ì™¸ë¶€ëŠ” ì•„ë§ˆ í† íƒˆìŠ¤í…Ÿë§Œ ì‚¬ìš©í•  ê²ƒìœ¼ë¡œ ë³´ì„
         public virtual float GetTotalStat(eStatType type)
         {
             return GetStat(eStatCategory.TOTAL, type);
@@ -113,8 +113,8 @@ namespace DOW
             return Mathf.FloorToInt(GetTotalStat(type));
         }
         #endregion
-        #region °»½Å ¹× Dirty
-        //Total °»½ÅÇÏ´Â ºÎºĞ
+        #region ê°±ì‹  ë° Dirty
+        //Total ê°±ì‹ í•˜ëŠ” ë¶€ë¶„
         public void CalcStat(eStatType type)
         {
             if (!GetDirty(type))
@@ -149,7 +149,7 @@ namespace DOW
 
             return StatDirty[type];
         }
-        //Â÷ÈÄ MinMax°ª ÀÖÀ» ½Ã Å¸ÀÔ º° °ª Àû¿ëÇÏ¿© »ç¿ë
+        //ì°¨í›„ MinMaxê°’ ìˆì„ ì‹œ íƒ€ì… ë³„ ê°’ ì ìš©í•˜ì—¬ ì‚¬ìš©
         protected float CheckStatMinMax(eStatType type, float value)
         {
             return value;
