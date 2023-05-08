@@ -9,6 +9,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-csharp", "spine-cshar
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coffee.UIParticle", "Coffee.UIParticle.csproj", "{88bf34bd-10a4-023b-1df5-6044c0f3e500}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayMode", "PlayMode.csproj", "{2ae8631a-e837-b231-8759-b39dd2a6a3f7}"
+EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{260565f2-8edd-6d6c-afe6-d210ab6b2393}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{c167a13c-7dcf-5904-e875-2b9e080e79b2}"
@@ -28,6 +30,8 @@ Global
 		{a0b6c02f-8750-0a25-330b-4d7c0c742e0e}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{88bf34bd-10a4-023b-1df5-6044c0f3e500}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{88bf34bd-10a4-023b-1df5-6044c0f3e500}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2ae8631a-e837-b231-8759-b39dd2a6a3f7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2ae8631a-e837-b231-8759-b39dd2a6a3f7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260565f2-8edd-6d6c-afe6-d210ab6b2393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{260565f2-8edd-6d6c-afe6-d210ab6b2393}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{c167a13c-7dcf-5904-e875-2b9e080e79b2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
