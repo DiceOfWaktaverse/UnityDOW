@@ -68,6 +68,7 @@ namespace DOW
                 return null;
 
             //레이어 세팅 필요
+            Func.SetLayer(target, LayerMask.NameToLayer("UI"));
             //
 
             PopupBase result = target.GetComponent<PopupBase>();
@@ -88,7 +89,7 @@ namespace DOW
             Type curType = typeof(T);
             T popupObj;
             if (Instance.popupDic.Keys.Contains(curType) == false)
-                popupObj = CreatePopup(Resources.Load<GameObject>(path)) as T;
+                popupObj = CreatePopup(ResourceManager.GetResource<GameObject>(path)) as T;
             else   // 이미 로드한 팝업을 건드는 경우  
                 popupObj = Instance.popupDic[curType] as T;
 

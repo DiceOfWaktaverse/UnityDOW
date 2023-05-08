@@ -6,8 +6,6 @@ namespace DOW
 {
     public class ResourceManager : IManagerBase
     {
-		private static Dictionary<string, AssetBundle> cachedAsset = new Dictionary<string, AssetBundle>();
-        public static Dictionary<string, string> AssetGuidDic = new Dictionary<string, string>();
         public static ResourceManager instance = null;
         public static ResourceManager Instance
         {
