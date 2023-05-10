@@ -48,6 +48,19 @@ namespace DOW
 
             yield break;
         }
+        public static string GetPath(this eResourcePath path, string fileName = "")
+        {
+            var value = path switch
+            {
+                eResourcePath.POPUP => "Prefabs/Popup",
+                _ => ""
+            };
+
+            if (fileName == "")
+                return value;
+
+            return StrBuilder(value, "/", fileName);
+        }
         #region Time
         public static string TimeString(int sec)
         {
