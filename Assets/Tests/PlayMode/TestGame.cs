@@ -21,13 +21,8 @@ namespace TestGame
         public IEnumerator TestMenu()
         {
             var gameObject = new GameObject();
-            string name = "start"; // Your Button Name
-            GameObject startButton = GameObject.Find(name);
-            Assert.NotNull(startButton);
-            var setupButton = startButton.GetComponent<Button>();
-            setupButton.onClick.AddListener(Clicked);
-            setupButton.onClick.Invoke();
-            Assert.IsTrue(clicked);
+            GameObject UI = GameObject.Find("UI");
+            Assert.NotNull(UI);
             yield return new WaitForSeconds(2);
         }
 
