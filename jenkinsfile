@@ -1,0 +1,37 @@
+pipeline {
+    agent any
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                    git credentialsId: 'github-creds', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'master'
+                }
+            }
+        }
+        
+        stage('Build') {
+            agent {
+                label 'fernandoKimMacBook'
+            }
+            
+            steps {
+                script {
+                    sh 'UnityHub -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease'
+                }
+            }
+            
+            post {
+                always {
+                    archiveArtifacts 'proj.pcwin/**/*'
+                    
+                    discordSend webhookURL: 'https://your-webhook-url-here',
+                                title: "Unity Build",
+                                description: "${env.JOB_NAME} build ${currentBuild.currentResult}",
+                                result: currentBuild.currentResult,
+                                footer: "${env.BUILD_URL}"
+                }
+            }
+        }
+    }
+}

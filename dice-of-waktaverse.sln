@@ -13,9 +13,9 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayMode", "PlayMode.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "spine-unity-editor", "spine-unity-editor.csproj", "{260565f2-8edd-6d6c-afe6-d210ab6b2393}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{c167a13c-7dcf-5904-e875-2b9e080e79b2}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Coffee.UIParticle.Editor", "Coffee.UIParticle.Editor.csproj", "{ca0b965b-7d35-0424-fc2e-188a4fd76269}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Assembly-CSharp-Editor", "Assembly-CSharp-Editor.csproj", "{c167a13c-7dcf-5904-e875-2b9e080e79b2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -34,10 +34,10 @@ Global
 		{2ae8631a-e837-b231-8759-b39dd2a6a3f7}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{260565f2-8edd-6d6c-afe6-d210ab6b2393}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{260565f2-8edd-6d6c-afe6-d210ab6b2393}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{c167a13c-7dcf-5904-e875-2b9e080e79b2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{c167a13c-7dcf-5904-e875-2b9e080e79b2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{ca0b965b-7d35-0424-fc2e-188a4fd76269}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{ca0b965b-7d35-0424-fc2e-188a4fd76269}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{c167a13c-7dcf-5904-e875-2b9e080e79b2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{c167a13c-7dcf-5904-e875-2b9e080e79b2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
