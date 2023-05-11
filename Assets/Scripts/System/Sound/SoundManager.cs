@@ -436,14 +436,6 @@ namespace DOW
             PlayerPrefs.SetFloat("effectVolume", EffectVolume);
             EffectVolumeControl();
         }
-        public void VolumeControl(float mVolume, float bVolume, float eVolume)
-        {
-            MasterVolume = mVolume;
-            BgmVolume = bVolume;
-            EffectVolume = eVolume;
-            BackgroundVolumeControl();
-            EffectVolumeControl();
-        }
 
         public void BackgroundVolumeControl()
         {

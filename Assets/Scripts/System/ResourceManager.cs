@@ -4,10 +4,18 @@ using UnityEngine;
 
 namespace DOW
 {
-    public class ResourceManager : IManagerBase
+	public enum eResourcePath
     {
-		private static Dictionary<string, AssetBundle> cachedAsset = new Dictionary<string, AssetBundle>();
-        public static Dictionary<string, string> AssetGuidDic = new Dictionary<string, string>();
+		NONE = 0,
+		START = 1,
+
+		POPUP = START,
+
+		MAX
+    }
+
+	public class ResourceManager : IManagerBase
+    {
         public static ResourceManager instance = null;
         public static ResourceManager Instance
         {
@@ -27,8 +35,12 @@ namespace DOW
 		}
 
 		public void Initialize() { }
-
-		public static T GetResource<T>(string path) where T : Object //어지간하면 사용하지 맙시다.
+		
+		public static T GetResource<T>(eResourcePath path, string fileName) where T : Object
+		{
+			return GetResource<T>(path.GetPath(fileName));
+		}
+		private static T GetResource<T>(string path) where T : Object //어지간하면 사용하지 맙시다.
 		{
 			return Resources.Load<T>(path);
 		}

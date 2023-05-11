@@ -32,6 +32,10 @@ namespace DOW
                 Application.Quit();
 #endif
             }
+            if (Input.GetKeyDown(KeyCode.X))
+            {
+                SystemPopup.OpenPopup("타이틀", "내용내용내용내용", "확인", "취소");
+            }
         }
 	}
 }

@@ -68,6 +68,7 @@ namespace DOW
                 return null;
 
             //레이어 세팅 필요
+            Func.SetLayer(target, LayerMask.NameToLayer("UI"));
             //
 
             PopupBase result = target.GetComponent<PopupBase>();
@@ -83,12 +84,12 @@ namespace DOW
         }
 
 
-        public static T OpenPopup<T>(string path) where T : PopupBase
+        public static T OpenPopup<T>(string popupName) where T : PopupBase
         {
             Type curType = typeof(T);
             T popupObj;
             if (Instance.popupDic.Keys.Contains(curType) == false)
-                popupObj = CreatePopup(Resources.Load<GameObject>(path)) as T;
+                popupObj = CreatePopup(ResourceManager.GetResource<GameObject>(eResourcePath.POPUP, popupName)) as T;
             else   // 이미 로드한 팝업을 건드는 경우  
                 popupObj = Instance.popupDic[curType] as T;
 
