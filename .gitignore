@@ -12,6 +12,7 @@ Packages/packages-lock.json
 Assets/Test
 Assets/Test.meta
 Assets/Test/*
+proj.*
 
 # IDE
 .vscode
