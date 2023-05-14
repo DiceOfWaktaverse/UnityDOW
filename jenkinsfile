@@ -2,7 +2,8 @@ pipeline {
     agent any
 
     environment {
-        UNITY_PATH = "/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity"
+        UNITY_PATH = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity'
+        BUILD_CLASS_PATH = 'JENKINS.JenkinsBuildProcessor.BuildGradlePCRelease'
     }
     
     stages {
@@ -21,7 +22,7 @@ pipeline {
             
             steps {
                 script {
-                    sh '$UNITY_PATH -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease '
+                    sh '$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log'
                 }
             }
             
