@@ -36,7 +36,7 @@ pipeline {
                     discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
                                 title: "Unity Build",
                                 description: "$build ${currentBuild.currentResult}",
-                                result: currentBuild.currentResult,
+                                result: currentBuild.currentResult
                 }
             }
         }
