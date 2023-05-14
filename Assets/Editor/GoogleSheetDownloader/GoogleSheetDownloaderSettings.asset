@@ -12,6 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0728dcdcf509a43468970b79d92f9488, type: 3}
   m_Name: GoogleSheetDownloaderSettings
   m_EditorClassIdentifier: 
-  DocumentID: 
-  SheetName: []
+  DocumentID: 1gw218YyD-XnLYG7aj3vc4NSX7rf0DA4-OVdFAW3rNRk
+  SheetName:
+  - "\uCE90\uB9AD\uD130\uCE74\uB4DC"
+  - "\uC2A4\uD0AC\uCE74\uB4DC"
   ClassName: []
