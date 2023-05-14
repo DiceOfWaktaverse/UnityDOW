@@ -35,9 +35,8 @@ pipeline {
                 always {
                     discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
                                 title: "Unity Build",
-                                description: "${env.JOB_NAME} build ${currentBuild.currentResult}",
+                                description: "$build ${currentBuild.currentResult}",
                                 result: currentBuild.currentResult,
-                                footer: "${env.BUILD_URL}"
                 }
             }
         }
