@@ -23,7 +23,7 @@ pipeline {
             
             steps {
                 script {
-                    sh '$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log'
+                    sh "$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log"
                 }
             }
             
@@ -33,7 +33,7 @@ pipeline {
                     archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
                 }
                 always {
-                    sh './send-discord-notification.sh ${currentBuild.currentResult} ${currentBuild.duration} ${env.BUILD_URL} ${env.DOW_DISCORD_WEBHOOK_URL}'
+                    sh "./send-discord-notification.sh ${currentBuild.currentResult} ${currentBuild.duration} ${env.BUILD_URL} ${env.DOW_DISCORD_WEBHOOK_URL}"
                 }
             }
         }
