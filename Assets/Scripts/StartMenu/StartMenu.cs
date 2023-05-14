@@ -26,10 +26,11 @@ public class StartMenu : MonoBehaviour
         //매인화면을 enabled하고
         Debug.Log("finishIntro");
 
-        StartMenuPopup.OpenPopup();
         //bgm시작
         SoundManager.Instance.Initialize();
         SoundManager.Instance.PushBGM(startManuAudioSource);
     }
+
+    public static void openPreferencePopup() => PreferencePopup.OpenPopup();
 
 }
