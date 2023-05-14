@@ -1,0 +1,44 @@
+pipeline {
+    agent any
+
+    environment {
+        UNITY_PATH = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity'
+        BUILD_CLASS_PATH = 'JENKINS.JenkinsBuildProcessor.BuildGradlePCRelease'
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: '14f37158-0987-4901-8123-42095c5e077f', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                    git credentialsId: '14f37158-0987-4901-8123-42095c5e077f', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'master'
+                }
+            }
+        }
+        
+        stage('Build') {
+            agent {
+                label 'fernandoKimMacBook'
+            }
+            
+            steps {
+                script {
+                    sh '$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log'
+                    sh 'echo "Hello World"'
+                }
+            }
+            
+            post {
+                success {
+                    sh 'zip -r build.zip proj.pcwin'
+                    archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
+                }
+                // always {
+                //     discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
+                //                 title: "Unity Build",
+                //                 description: "$build ${currentBuild.currentResult}",
+                //                 result: currentBuild.currentResult
+                // }
+            }
+        }
+    }
+}

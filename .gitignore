@@ -13,3 +13,9 @@ Assets/Test
 Assets/Test.meta
 Assets/Test/*
 proj.*
+
+# IDE
+.vscode
+
+# TEMP
+result.log
