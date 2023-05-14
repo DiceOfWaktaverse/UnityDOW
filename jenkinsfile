@@ -5,7 +5,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 withCredentials([usernamePassword(credentialsId: 'github-creds', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
-                    git credentialsId: 'github-creds', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'master'
+                    git credentialsId: 'github-creds', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'fernando_kim/cicd'
                 }
             }
         }
@@ -17,14 +17,18 @@ pipeline {
             
             steps {
                 script {
-                    sh 'UnityHub -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease'
+                    sh 'VERSION=2021.3.23f1'
+                    sh 'UNITY_PATH=/Applications/Unity/Hub/Editor/$VERSION/Unity.app/Contents/MacOS/Unity'
+                    sh '$UNITY_PATH -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease'
                 }
             }
             
             post {
                 always {
-                    archiveArtifacts 'proj.pcwin/**/*'
-                    
+                    def timestamp = new Date().format('yyMMdd_HHmm')
+                    sh "zip -r build_${timestamp}.zip proj.pcwin"
+                    archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
+                                
                     discordSend webhookURL: 'https://your-webhook-url-here',
                                 title: "Unity Build",
                                 description: "${env.JOB_NAME} build ${currentBuild.currentResult}",

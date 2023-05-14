@@ -16,3 +16,6 @@ proj.*
 
 # IDE
 .vscode
+
+# TEMP
+result.log
