@@ -37,7 +37,7 @@ pipeline {
                                 title: "Unity Build",
                                 description: "${env.JOB_NAME} build ${currentBuild.currentResult}",
                                 result: currentBuild.currentResult,
-                                footer: "${env.BUILD_URL}",
+                                footer: "${env.BUILD_URL}"
                 }
             }
         }
