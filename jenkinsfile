@@ -10,7 +10,7 @@ pipeline {
         stage('Checkout') {
             steps {
                 withCredentials([usernamePassword(credentialsId: '14f37158-0987-4901-8123-42095c5e077f', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
-                    git credentialsId: '14f37158-0987-4901-8123-42095c5e077f', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'fernando_kim/cicd'
+                    git credentialsId: '14f37158-0987-4901-8123-42095c5e077f', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'master'
                 }
             }
         }
