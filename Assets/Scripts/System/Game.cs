@@ -1,5 +1,6 @@
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace DOW
 {
@@ -17,6 +18,8 @@ namespace DOW
 
             DOWGameManager.Instance.Init();
             UIManager.Instance.InitUI(eSceneType.None);
+
+            SceneManager.LoadScene("StartMenu");
 		}
 
         // Update is called once per frame
