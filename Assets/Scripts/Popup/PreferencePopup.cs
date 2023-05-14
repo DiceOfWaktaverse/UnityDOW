@@ -32,7 +32,6 @@ public class PreferencePopup : Popup<PreferencePopupData>
 
     public virtual void closePreference()
     {
-        StartMenuPopup.OpenPopup();
         ClosePopup();
     }
 
