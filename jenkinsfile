@@ -1,5 +1,9 @@
 pipeline {
     agent any
+
+    environment {
+        UNITY_PATH = "/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity"
+    }
     
     stages {
         stage('Checkout') {
@@ -17,19 +21,16 @@ pipeline {
             
             steps {
                 script {
-                    sh 'VERSION=2021.3.23f1'
-                    sh 'UNITY_PATH=/Applications/Unity/Hub/Editor/$VERSION/Unity.app/Contents/MacOS/Unity'
-                    sh '$UNITY_PATH -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease'
+                    sh '$UNITY_PATH -quit -batchmode -projectPath "$(pwd)" -executeMethod CI.BuildGradlePCRelease '
                 }
             }
             
             post {
                 always {
-                    def timestamp = new Date().format('yyMMdd_HHmm')
-                    sh "zip -r build_${timestamp}.zip proj.pcwin"
+                    sh 'zip -r build.zip proj.pcwin'
                     archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
                                 
-                    discordSend webhookURL: 'https://your-webhook-url-here',
+                    discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
                                 title: "Unity Build",
                                 description: "${env.JOB_NAME} build ${currentBuild.currentResult}",
                                 result: currentBuild.currentResult,
