@@ -1,16 +1,13 @@
 BUILD_RESULT=$1
-BUILD_NUMBER=$2
-ELAPSED_MILLISECONDS=$3
+ELAPSED_MILLISECONDS=$2
+BUILD_URL=$3
+WEBHOOK_URL=$4
 
-# Discord Webhook URL
-WEBHOOK_URL="https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7"
-# WEBHOOK_URL = 'https://discord.com/api/webhooks/1107182183392747550/szIdxAUbBO2kloeqC5eiEi5pB6PY0K7PqKUd6rnCs8tqUaV00dwQOIiqEBxeN2chkzsA'
+set -x
 
 # Server config
-BUILD_SERVER_URL="https://build.kickpunch.xyz"
-BUILD_PIPELINE_NAME="Dice%20of%20Waktaverse%20Test%20Build"
-BUILD_ARTEFACT_URL="$BUILD_SERVER_URL/job/$BUILD_PIPELINE_NAME/$BUILD_NUMBER/artifact/build.zip"
-BUILD_CONSOLE_URL="$BUILD_SERVER_URL/job/$BUILD_PIPELINE_NAME/$BUILD_NUMBER/console"
+BUILD_ARTEFACT_URL="${BUILD_URL}artifact/build.zip"
+BUILD_CONSOLE_URL="${BUILD_URL}console"
 
 # list of random string
 USERNAME_LIST=("💖빌드시💖" "💩내가싼 빌드💩" "🍔빌드는 모시깽이🍔" "😲형 빌드 봤어?😲")
