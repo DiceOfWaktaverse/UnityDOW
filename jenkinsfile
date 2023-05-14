@@ -22,22 +22,22 @@ pipeline {
             
             steps {
                 script {
-                    // sh '$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log'
+                    sh '$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log'
                     sh 'echo "Hello World"'
                 }
             }
             
             post {
-                // success {
-                //     sh 'zip -r build.zip proj.pcwin'
-                //     archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
-                // }
-                always {
-                    discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
-                                title: "Unity Build",
-                                description: "$build ${currentBuild.currentResult}",
-                                result: currentBuild.currentResult
+                success {
+                    sh 'zip -r build.zip proj.pcwin'
+                    archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
                 }
+                // always {
+                //     discordSend webhookURL: 'https://discord.com/api/webhooks/1106113176866656326/e1k3lcO4sOfCjwKcwxslMrgcEJSBKImOsR41eI7gDAfX4pLm3bjQA6BI23e04jDqUsq7',
+                //                 title: "Unity Build",
+                //                 description: "$build ${currentBuild.currentResult}",
+                //                 result: currentBuild.currentResult
+                // }
             }
         }
     }
