@@ -8,8 +8,8 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                withCredentials([usernamePassword(credentialsId: 'Github Access', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
-                    git credentialsId: 'Github Access', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'fernando_kim/cicd'
+                withCredentials([usernamePassword(credentialsId: '14f37158-0987-4901-8123-42095c5e077f', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                    git credentialsId: '14f37158-0987-4901-8123-42095c5e077f', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: 'fernando_kim/cicd'
                 }
             }
         }
