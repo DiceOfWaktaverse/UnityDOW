@@ -4,7 +4,7 @@ pipeline {
     environment {
         UNITY_PATH = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity'
         BUILD_CLASS_PATH = 'JENKINS.JenkinsBuildProcessor.BuildGradlePCRelease'
-        DISCORD_WEBHOOK_URL = credentials('DISCORD_WEBHOOK_URL')
+        DOW_DISCORD_WEBHOOK_URL = credentials('DOW_DISCORD_WEBHOOK_URL')
     }
     
     stages {
@@ -33,7 +33,7 @@ pipeline {
                     archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
                 }
                 always {
-                    sh './send-discord-notification.sh ${currentBuild.currentResult} ${currentBuild.duration} ${env.BUILD_URL} ${env.DISCORD_WEBHOOK_URL}'
+                    sh './send-discord-notification.sh ${currentBuild.currentResult} ${currentBuild.duration} ${env.BUILD_URL} ${env.DOW_DISCORD_WEBHOOK_URL}'
                 }
             }
         }
