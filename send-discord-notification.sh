@@ -25,6 +25,10 @@ ELAPSED=$(printf "%d분 %d초" $(($ELAPSED_MILLISECONDS/1000/60)) $(($ELAPSED_MI
 GREEN=5763719
 RED=15548997
 
+# Git Commit Info
+AUTHOR=$(git log -1 --pretty=format:"%an")
+MESSAGE=$(git log -1 --pretty=format:"%s")
+
 generate_success_data()
 {
   cat <<EOF
@@ -35,7 +39,7 @@ generate_success_data()
       "color": $GREEN,
       "description": "빌드가 성공하였습니다 - [다운로드]($BUILD_ARTEFACT_URL)",
       "footer": {
-        "text": "- 종료시점: $TIMESTAMP\n- 소요시간: $ELAPSED"
+        "text": "- 종료시점: $TIMESTAMP\n- 소요시간: $ELAPSED\n- 수정한 사람: $AUTHOR\n- 메시지: $MESSAGE"
       }
     }
   ]
@@ -53,7 +57,7 @@ generate_failure_data()
       "color": $RED,
       "description": "빌드가 실패하였습니다 - [로그보기]($BUILD_CONSOLE_URL)",
       "footer": {
-        "text": "- 종료시점: $TIMESTAMP\n- 소요시간: $ELAPSED"
+        "text": "- 종료시점: $TIMESTAMP\n- 소요시간: $ELAPSED\n- 수정한 사람: $AUTHOR\n- 메시지: $MESSAGE"
       }
     }
   ]
