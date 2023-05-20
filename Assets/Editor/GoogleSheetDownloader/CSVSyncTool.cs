@@ -279,9 +279,9 @@ public class CSVSyncTool : EditorWindow
             if (refreshInfo)
                 LoadCSVFileInfo();
         }
-        catch (GoogleApiException)
+        catch (GoogleApiException e)
         {
-            Debug.LogError($"시트 이름 확인 필요 : {sheetName}");
+            Debug.LogError($"시트 이름 확인 필요 : {sheetName} => {e.Message}");
             EditorUtility.ClearProgressBar();
         }
         catch (Exception)
