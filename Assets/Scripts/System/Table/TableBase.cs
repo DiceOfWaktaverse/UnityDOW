@@ -14,7 +14,7 @@ namespace DOW
             else
                 datas.Clear();
         }
-        public abstract void SetTable(List<List<string>> jsonArray);
+        public abstract void SetTable(List<Dictionary<string, string>> array);
         public virtual void DataClear()
         {
             if (datas == null)

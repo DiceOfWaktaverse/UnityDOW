@@ -70,9 +70,18 @@ namespace DOW
 			//GameDataLoading();
 		}
 
-		private Dictionary<string, List<List<string>>> GetData()//데이터 읽어옵시다.
+		private Dictionary<string, List<Dictionary<string, string>>> GetData()//데이터 읽어옵시다.
 		{
-			return null;
+			var data = new Dictionary<string, List<Dictionary<string, string>>>();
+			//테이블 구조의 한글은 별로 효율 면에서는 안좋지만, 편의성을 위해서 채택됨.
+			GetDesignData(data, "캐릭터카드");
+			GetDesignData(data, "스킬카드");
+
+			return data;
+		}
+		private void GetDesignData(Dictionary<string, List<Dictionary<string, string>>> result, string tableName)
+		{
+			result.Add(tableName, CSVReader.ReadWithUniqueKeyForFile(eResourcePath.DATA.GetPath(tableName)));
 		}
 		private void SetDesignData()//데이터 로드합시다.
 		{
@@ -90,11 +99,12 @@ namespace DOW
 
 				switch (name)
 				{
-					//case "테이블 명":
-					//{
-					//	TableManager.GetTable<AreaExpansionTable>().SetTable((JArray)curData);
-					//} break;
-					default:
+                    case "스킬카드":
+                    {
+                        TableManager.GetTable<SkillCardTable>().SetTable(datas);
+                    }
+                    break;
+                    default:
 						break;
 				}
 			}

@@ -53,6 +53,7 @@ namespace DOW
             var value = path switch
             {
                 eResourcePath.POPUP => "Prefabs/Popup",
+                eResourcePath.DATA => "Data",
                 _ => ""
             };
 

@@ -60,9 +60,9 @@ namespace DOW
             if (_sourcePool == null)
                 _sourcePool = new ListPool<AudioSource>(ReuseSource, UnuseSource);
 
-            MasterVolume = PlayerPrefs.GetFloat("master", 1f);
-            BgmVolume = PlayerPrefs.GetFloat("bgm", 1f);
-            EffectVolume = PlayerPrefs.GetFloat("effect", 1f);
+            MasterVolume = PlayerPrefs.GetFloat("masterVolume", 1f);
+            BgmVolume = PlayerPrefs.GetFloat("bgmVolume", 1f);
+            EffectVolume = PlayerPrefs.GetFloat("effectVolume", 1f);
 
             SpawnPool(10);
         }
