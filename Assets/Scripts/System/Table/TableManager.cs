@@ -1,3 +1,4 @@
+using DOW;
 using System;
 using System.Collections.Generic;
 
@@ -19,7 +20,7 @@ namespace DOW
                     instance = new TableManager();
 
                     #region 테이블 세팅
-                    //instance.AddTable(typeof(테이블 타입), new 테이블 타입());
+                    instance.AddTable(typeof(SkillCardTable), new SkillCardTable());
                     #endregion
                 }
                 return instance;

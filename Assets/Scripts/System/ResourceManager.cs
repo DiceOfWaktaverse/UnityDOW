@@ -10,6 +10,7 @@ namespace DOW
 		START = 1,
 
 		POPUP = START,
+		DATA,
 
 		MAX
     }

@@ -247,6 +247,9 @@ public class CSVSyncTool : EditorWindow
 
             foreach (var row in values)
             {
+                if (row.Count < 1)
+                    continue;
+
                 for (int j = 0; j < dataCount; ++j)
                 {
                     if (row.Count > j)

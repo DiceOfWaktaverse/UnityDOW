@@ -9,39 +9,18 @@ namespace DOW
         protected string UNIQUE_KEY { get; private set; }
 
         protected Dictionary<string, string> data = null;
-        protected static Dictionary<Type, List<string>> data_keys = new Dictionary<Type, List<string>>();
 
-        public TableData(List<string> data)
+        public TableData(Dictionary<string, string> data)
         {
             SetData(data);
         }
 
         public virtual void Init() { }
         public string GetKey() { return UNIQUE_KEY; }
-        public static void SetDataKeys(Type type, List<string> key)
+
+        public virtual void SetData(Dictionary<string, string> datas)
         {
-            data_keys[type] = key;
-        }
-
-        public virtual void SetData(List<string> datas)
-        {
-            if (data_keys == null || data_keys[GetType()] == null)
-            {
-#if UNITY_EDITOR
-                Debug.LogError("not found data keys");
-#endif
-                return;
-            }
-
-            var key = data_keys[GetType()];
-
-            data = new Dictionary<string, string>();
-
-            for (int i = 0; i < key.Count; i++)
-            {
-                data[key[i]] = datas[i];
-            }
-
+            data = datas;
             SetUniqueID();
         }
 
