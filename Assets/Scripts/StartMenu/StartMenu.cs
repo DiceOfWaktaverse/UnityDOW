@@ -9,24 +9,25 @@ public class StartMenu : MonoBehaviour
     public AudioSource startManuAudioSource;
     public GameObject beacon;
 
-    //ÀÎÆ®·Î ½ÇÇà
+    //ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
     void Start()
     {
         PopupManager.Instance.Initialize();
         PopupManager.Instance.SetBeacon(beacon);
 
 
-        VideoScreenPopup.OpenPopup(this);
+        // VideoScreenPopup.OpenPopup(this);
+        LoadingSplashPopup.OpenPopup();
     }
 
     public void finishIntro()
     {
-        //ÀÎÆ®·Î°¡ ³¡³­½ÃÁ¡
-        //¸ÅÀÎ È­¸éÀÌ º¸¿©¾ßÇÔ
-        //¸ÅÀÎÈ­¸éÀ» enabledÇÏ°í
+        //ï¿½ï¿½Æ®ï¿½Î°ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½ È­ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+        //ï¿½ï¿½ï¿½ï¿½È­ï¿½ï¿½ï¿½ï¿½ enabledï¿½Ï°ï¿½
         Debug.Log("finishIntro");
 
-        //bgm½ÃÀÛ
+        //bgmï¿½ï¿½ï¿½ï¿½
         SoundManager.Instance.Initialize();
         SoundManager.Instance.PushBGM(startManuAudioSource);
     }
