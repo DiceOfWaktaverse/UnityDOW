@@ -4,34 +4,51 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Video;
 
-public class StartMenu : MonoBehaviour
+namespace DOW
 {
-    public AudioSource startManuAudioSource;
-    public GameObject beacon;
-
-    //��Ʈ�� ����
-    void Start()
+    public enum StartMenuEventType
     {
-        PopupManager.Instance.Initialize();
-        PopupManager.Instance.SetBeacon(beacon);
-
-
-        // VideoScreenPopup.OpenPopup(this);
-        LoadingSplashPopup.OpenPopup();
+        LoadingSplashFinished,
+        StartSplashFinished
     }
-
-    public void finishIntro()
+    public class StartMenu : MonoBehaviour, EventListener<StartMenuEventType>
     {
-        //��Ʈ�ΰ� ��������
-        //���� ȭ���� ��������
-        //����ȭ���� enabled�ϰ�
-        Debug.Log("finishIntro");
+        public AudioSource startMenuAudioSource;
+        public GameObject beacon;
+        public static StartMenuStateMachine startMenuStateMachine = new StartMenuStateMachine();
 
-        //bgm����
-        SoundManager.Instance.Initialize();
-        SoundManager.Instance.PushBGM(startManuAudioSource);
+        //��Ʈ�� ����
+        void Start()
+        {
+            PopupManager.Instance.Initialize();
+            PopupManager.Instance.SetBeacon(beacon);
+            SoundManager.Instance.Initialize();
+
+            startMenuStateMachine.StateInit();
+            this.EventStartListening<StartMenuEventType>();
+        }
+
+        public void Update() {
+            // input deltatime to current state
+            if (startMenuStateMachine.CurState != null) {
+                startMenuStateMachine.CurState.Update(Time.deltaTime);
+            }
+        }
+
+        public void OnEvent(StartMenuEventType eventType) {
+            if (eventType == StartMenuEventType.LoadingSplashFinished) {
+                startMenuStateMachine.ChangeState<StartSplashState>();
+                SoundManager.Instance.PushBGM(startMenuAudioSource);
+            }
+            if (eventType == StartMenuEventType.StartSplashFinished) {
+                startMenuStateMachine.ChangeState<MainMenuState>();
+            }
+        }
+
+
+        public void OnDestroy() {
+            this.EventStopListening<StartMenuEventType>();
+        }
     }
-
-    public static void openPreferencePopup() => PreferencePopup.OpenPopup();
 
 }

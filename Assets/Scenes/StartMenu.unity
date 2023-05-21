@@ -455,7 +455,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c5c43ebbb3bff3a40929aef49b07bffa, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startManuAudioSource: {fileID: 1524191637}
+  startMenuAudioSource: {fileID: 1524191637}
   beacon: {fileID: 0}
 --- !u!82 &1524191637
 AudioSource:
@@ -467,7 +467,7 @@ AudioSource:
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
-  m_audioClip: {fileID: 8300000, guid: a990c38944f4cc24ba4e32a4a1b31947, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 2f0d05908da94854ea1b40561708cfe3, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
