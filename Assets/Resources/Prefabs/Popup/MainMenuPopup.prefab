@@ -102,7 +102,7 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3175715835479814320}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -1080}
   m_LocalScale: {x: 1.8403199, y: 1.8403199, z: 1.8403199}
   m_ConstrainProportionsScale: 0
@@ -289,7 +289,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2603814813746307403}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: -9202063358760386256}
+        m_TargetAssemblyTypeName: DOW.MainMenuPopup, Assembly-CSharp
+        m_MethodName: openDifficultyPopup
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &4285566630119979063
 GameObject:
   m_ObjectHideFlags: 0
@@ -572,8 +584,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: StartMenu, Assembly-CSharp
+      - m_Target: {fileID: -9202063358760386256}
+        m_TargetAssemblyTypeName: DOW.MainMenuPopup, Assembly-CSharp
         m_MethodName: openPreferencePopup
         m_Mode: 1
         m_Arguments:
