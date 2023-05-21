@@ -39,6 +39,8 @@ namespace DOW
 
 		public GamePreferenceData GamePrefData { get; private set; } = null;
 
+		public UserInfo User;
+
 		public void Init()
         {
 			if (GamePrefData == null)
