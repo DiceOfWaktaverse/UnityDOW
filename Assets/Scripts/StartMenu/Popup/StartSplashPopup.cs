@@ -19,10 +19,12 @@ namespace DOW
 
         public override void InitializeUI()
         {
+
         }
 
         public override void Refresh()
         {
+
         }
 
         public static StartSplashPopup OpenPopup()
