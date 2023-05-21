@@ -6,8 +6,6 @@ namespace DOW
 {
     public class Game : PersistentSingleton<Game>
     {
-        [SerializeField]
-        GameObject mainMenuManager = null;
 
         // Start is called before the first frame update
         protected override void Awake()
@@ -23,7 +21,6 @@ namespace DOW
             UIManager.Instance.InitUI(eSceneType.None);
 
             SceneManager.LoadScene("StartMenu");
-            // if (mainMenuManager != null) Instantiate(mainMenuManager); 
 		}
 
         // Update is called once per frame
