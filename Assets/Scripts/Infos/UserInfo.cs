@@ -45,7 +45,7 @@ namespace DOW
             }
         }
         /// <summary>
-        /// º»ÀÎ ¼¼ÀÌºêµµ ÇØ¾ßÇÔ
+        /// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ìºêµµ ï¿½Ø¾ï¿½ï¿½ï¿½
         /// </summary>
         public void SaveInfo()
         {
@@ -56,7 +56,7 @@ namespace DOW
             }
         }
         /// <summary>
-        /// º»ÀÎ ·Îµåµµ ÇØ¾ßÇÔ
+        /// ï¿½ï¿½ï¿½ï¿½ ï¿½Îµåµµ ï¿½Ø¾ï¿½ï¿½ï¿½
         /// </summary>
         public void LoadInfo()
         {
