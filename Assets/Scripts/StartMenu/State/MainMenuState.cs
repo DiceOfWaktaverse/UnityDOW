@@ -10,7 +10,6 @@ namespace DOW
     
         public override bool OnEnter()
         {
-            Debug.Log("MainMenuState OnEnter");
             mainMenuPopup = MainMenuPopup.OpenPopup();
 
             return base.OnEnter();
@@ -18,7 +17,6 @@ namespace DOW
 
         public override bool OnExit()
         {
-            Debug.Log("MainMenuState OnExit");
             if (mainMenuPopup != null)
             {
                 mainMenuPopup.closeMainMenu();

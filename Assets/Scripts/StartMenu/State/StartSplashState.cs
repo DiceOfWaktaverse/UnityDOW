@@ -10,8 +10,8 @@ namespace DOW
 
         public override bool OnEnter()
         {
-            Debug.Log("StartSplashState OnEnter");
             startSplashPopup = StartSplashPopup.OpenPopup();
+
             return base.OnEnter();
         }
 
@@ -19,7 +19,6 @@ namespace DOW
         {
             if (Input.anyKeyDown)
             {
-                Debug.Log("StartSplashState Update: any key down");
                 EventManager.TriggerEvent(StartMenuEventType.StartSplashFinished);
                 return false;
             }
@@ -29,11 +28,11 @@ namespace DOW
 
         public override bool OnExit()
         {
-            Debug.Log("StartSplashState OnExit");
             if (startSplashPopup != null)
             {
                 startSplashPopup.closeStartSplash();
             }
+
             return base.OnExit();
         }
     }

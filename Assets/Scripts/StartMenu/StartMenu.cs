@@ -9,7 +9,8 @@ namespace DOW
     public enum StartMenuEventType
     {
         LoadingSplashFinished,
-        StartSplashFinished
+        StartSplashFinished,
+        DifficultySelected,
     }
     public class StartMenu : MonoBehaviour, EventListener<StartMenuEventType>
     {
@@ -17,13 +18,12 @@ namespace DOW
         public GameObject beacon;
         public static StartMenuStateMachine startMenuStateMachine = new StartMenuStateMachine();
 
-        //��Ʈ�� ����
         void Start()
         {
             PopupManager.Instance.Initialize();
             PopupManager.Instance.SetBeacon(beacon);
             SoundManager.Instance.Initialize();
-
+            
             startMenuStateMachine.StateInit();
             this.EventStartListening<StartMenuEventType>();
         }
@@ -43,12 +43,13 @@ namespace DOW
             if (eventType == StartMenuEventType.StartSplashFinished) {
                 startMenuStateMachine.ChangeState<MainMenuState>();
             }
+            if (eventType == StartMenuEventType.DifficultySelected) {
+                Debug.Log("Go to Next Scene");
+            }
         }
-
 
         public void OnDestroy() {
             this.EventStopListening<StartMenuEventType>();
         }
     }
-
 }
