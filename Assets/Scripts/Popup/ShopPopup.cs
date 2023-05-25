@@ -15,17 +15,14 @@ namespace DOW
 
         public override void Initialize()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void InitializeUI()
         {
-            throw new System.NotImplementedException();
         }
 
         public override void Refresh()
         {
-            throw new System.NotImplementedException();
         }
     }
 }
