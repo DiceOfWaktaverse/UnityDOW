@@ -37,6 +37,10 @@ namespace DOW
             PreferencePopup.OpenPopup();
         }
 
+        public static void openTEST_ShopPopup() { 
+            ShopPopup.OpenPopup();
+        }
+
         public virtual void closeMainMenu()
         {
             ClosePopup();
