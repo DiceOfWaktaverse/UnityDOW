@@ -68,6 +68,10 @@ namespace DOW
 			instance.AddManager(typeof(UIManager), UIManager.Instance, false);
 			#endregion
 
+			// initialize UserInfo
+			User = new UserInfo();
+			User.Initialize();
+
 			SetDesignData();//디자인 데이터 로드
 			//GameDataLoading();
 		}
