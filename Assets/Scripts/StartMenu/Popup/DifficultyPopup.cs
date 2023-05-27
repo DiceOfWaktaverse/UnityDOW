@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 namespace DOW
@@ -48,6 +49,7 @@ namespace DOW
 
             // TODO: proceed to next scene
             Debug.Log(UserInfo.Instance.Difficulty);
+            //SceneManager.LoadScene("StageSelect");
         }
 
         public virtual void closePreference()

@@ -54,6 +54,7 @@ namespace DOW
             {
                 eResourcePath.POPUP => "Prefabs/Popup",
                 eResourcePath.DATA => "Data",
+                eResourcePath.SOUND => "Sound",
                 _ => ""
             };
 

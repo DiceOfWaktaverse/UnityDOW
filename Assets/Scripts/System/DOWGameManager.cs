@@ -63,7 +63,8 @@ namespace DOW
 
 			#region Manager 세팅
             instance.AddManager(typeof(TimeManager), TimeManager.Instance, true);
-            instance.AddManager(typeof(TableManager), TableManager.Instance, false);
+			Instance.AddManager(typeof(SoundManager), SoundManager.Instance, false);
+			instance.AddManager(typeof(TableManager), TableManager.Instance, false);
 			instance.AddManager(typeof(PopupManager), PopupManager.Instance, false);
 			instance.AddManager(typeof(UIManager), UIManager.Instance, false);
 			#endregion

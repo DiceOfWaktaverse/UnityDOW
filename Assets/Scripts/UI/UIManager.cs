@@ -45,7 +45,7 @@ namespace DOW
 
         public Queue<eSceneType> refreshQueue = new Queue<eSceneType>();
 
-        public eSceneType CurrentUIType { get; private set; } = eSceneType.None;
+        public eSceneType CurrentUIType { get; private set; } = eSceneType.NONE;
 
         public void Initialize()
         {

@@ -1,7 +1,9 @@
 using DOW;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 namespace DOW
@@ -14,18 +16,21 @@ namespace DOW
     }
     public class StartMenu : MonoBehaviour, EventListener<StartMenuEventType>
     {
-        public AudioSource startMenuAudioSource;
-        public GameObject beacon;
+        [SerializeField]
+        protected AudioClip bgmClip = null;
         public static StartMenuStateMachine startMenuStateMachine = new StartMenuStateMachine();
+
 
         void Start()
         {
-            PopupManager.Instance.Initialize();
-            PopupManager.Instance.SetBeacon(beacon);
-            SoundManager.Instance.Initialize();
-            
+            UIManager.Instance.InitUI(eSceneType.MAIN_MENU);
             startMenuStateMachine.StateInit();
-            this.EventStartListening<StartMenuEventType>();
+            this.EventStartListening();
+        }
+
+        void OnDestroy()
+        {
+            this.EventStopListening();
         }
 
         public void Update() {
@@ -38,7 +43,7 @@ namespace DOW
         public void OnEvent(StartMenuEventType eventType) {
             if (eventType == StartMenuEventType.LoadingSplashFinished) {
                 startMenuStateMachine.ChangeState<StartSplashState>();
-                SoundManager.Instance.PushBGM(startMenuAudioSource);
+                SoundManager.Instance.PushBGM(bgmClip);
             }
             if (eventType == StartMenuEventType.StartSplashFinished) {
                 startMenuStateMachine.ChangeState<MainMenuState>();
@@ -48,8 +53,38 @@ namespace DOW
             }
         }
 
-        public void OnDestroy() {
-            this.EventStopListening<StartMenuEventType>();
+        public static void OnClickDifficulty()
+        {
+            DifficultyPopup.OpenPopup();
+        }
+
+        public static void OnClickPreference()
+        {
+            PreferencePopup.OpenPopup();
+        }
+
+        public static void OnClickShop()
+        {
+            ShopPopup.OpenPopup();
+        }
+
+        public static void OnClickBook()
+        {
+            SystemPopup.OpenPopup("설명", "아직 도감 기능은 구현되지 않았습니다.", "확인");
+        }
+
+        public static void OnClickCredit()
+        {
+            SystemPopup.OpenPopup("설명", "아직 크레딧은 구현되지 않았습니다.", "확인");
+        }
+
+        public static void OnClickExit()
+        {
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#else
+            Application.Quit();
+#endif
         }
     }
 }

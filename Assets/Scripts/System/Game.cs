@@ -18,7 +18,7 @@ namespace DOW
             Application.targetFrameRate = 60;
 
             DOWGameManager.Instance.Init();
-            UIManager.Instance.InitUI(eSceneType.None);
+            UIManager.Instance.InitUI(eSceneType.NONE);
 
             SceneManager.LoadScene("StartMenu");
 		}
@@ -27,19 +27,6 @@ namespace DOW
         void Update()
 		{
 			DOWGameManager.Instance.Update(Time.deltaTime);
-
-			if (Input.GetKeyDown(KeyCode.Escape))
-            {
-#if UNITY_EDITOR
-                EditorApplication.ExitPlaymode();
-#else
-                Application.Quit();
-#endif
-            }
-            if (Input.GetKeyDown(KeyCode.X))
-            {
-                SystemPopup.OpenPopup("타이틀", "내용내용내용내용", "확인", "취소");
-            }
         }
 	}
 }
