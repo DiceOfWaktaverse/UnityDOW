@@ -75,6 +75,7 @@ namespace DOW
 
 			SetDesignData();//디자인 데이터 로드
 			//GameDataLoading();
+
 		}
 
 		private Dictionary<string, List<Dictionary<string, string>>> GetData()//데이터 읽어옵시다.

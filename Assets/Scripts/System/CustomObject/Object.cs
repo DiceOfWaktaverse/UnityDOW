@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SandboxNetwork
+namespace DOW
 {
     public abstract class DOWObject
     {
