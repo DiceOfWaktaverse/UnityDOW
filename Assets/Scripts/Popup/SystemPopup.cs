@@ -34,7 +34,7 @@ namespace DOW {
         }
 
         public override void Refresh() { }
-        public static SystemPopup OpenPopup(string title, string body, string yes, string no, Action okCallBack = null, Action cancelCallBack = null)
+        public static SystemPopup OpenPopup(string title, string body, string yes, string no = "", Action okCallBack = null, Action cancelCallBack = null)
         {
             SystemPopup popup = PopupManager.OpenPopup<SystemPopup>("SystemPopup");
 
@@ -48,17 +48,9 @@ namespace DOW {
         {
             return OpenPopup(title, body, "", "", okCallBack, cancelCallBack);
         }
-
-        public static SystemPopup OpenPopup(string title, string body, Action okCallBack, Action cancelCallBack, bool yesBtnOn, bool NoBtnOn)
-        {
-            var popup = OpenPopup(title, body, "", "", okCallBack, cancelCallBack);
-            popup.SetButtonState(yesBtnOn, NoBtnOn);
-            return popup;
-        }
-        public static SystemPopup OpenPopup(string title, string body, bool yesBtnOn, bool NoBtnOn)
+        public static SystemPopup OpenPopup(string title, string body)
         {
             var popup = OpenPopup(title, body, "", "");
-            popup.SetButtonState(yesBtnOn, NoBtnOn);
             return popup;
         }
 
@@ -123,12 +115,9 @@ namespace DOW {
                 no = "Cancle";//차후 테이블에서 읽는 형식이 필요해보임
                 if (no != "")
                     cancleText.text = no;
+
+                cancleBtn.SetActive(false);
             }
-        }
-        public void SetButtonState(bool yesBtnOn, bool NoBtnOn)
-        {
-            okBtn.SetActive(yesBtnOn);
-            cancleBtn.SetActive(NoBtnOn);
         }
     }
 }

@@ -6,9 +6,9 @@ namespace DOW
 {
     public abstract class UIObject : MonoBehaviour, IUIBase
     {
-        protected eSceneType curSceneType = eSceneType.None;
+        protected eSceneType curSceneType = eSceneType.NONE;
         [SerializeField]
-        protected eSceneType curUIType = eSceneType.None;
+        protected eSceneType curUIType = eSceneType.NONE;
         [SerializeField]
         protected List<UIObject> uiChildrens = null;
 
@@ -31,7 +31,7 @@ namespace DOW
             if (curSceneType != targetType)
                 curSceneType = targetType;
 
-            if (curSceneType > eSceneType.None && curUIType.HasFlag(curSceneType))
+            if (curSceneType > eSceneType.NONE && curUIType.HasFlag(curSceneType))
 				ReuseAnim();               
             else
                 UnuseAnim();

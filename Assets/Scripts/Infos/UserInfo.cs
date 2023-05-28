@@ -20,8 +20,8 @@ namespace DOW
     [System.Serializable]
     public class UserInfo : IInfo
     {
-        //public static UserInfo Instance { get { return DOWGameManager.Instance.User; } }
-        public eDifficulty Difficulty { get; private set; } = eDifficulty.NONE;
+        public static UserInfo Instance { get { return DOWGameManager.Instance.User; } }
+        public eDifficulty Difficulty { get; set; } = eDifficulty.NONE;
         public int Progress { get; private set; } = -1;
         [SerializeField]
         private Dictionary<eInfoType, IInfo> Infos { get; set; } = null;

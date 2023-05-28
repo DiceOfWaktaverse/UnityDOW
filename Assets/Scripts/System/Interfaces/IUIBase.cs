@@ -4,9 +4,13 @@ namespace DOW
     [System.Flags]
     public enum eSceneType
     {
-        None = 0,
+        NONE = 0,
+        START,
 
-        Intro = 1,
+        INTRO = START,
+        MAIN_MENU,
+
+        MAX
     }
     public interface IUIBase
     {

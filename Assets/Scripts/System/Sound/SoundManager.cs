@@ -39,8 +39,6 @@ namespace DOW
         {
             if (_clips == null)
                 _clips = new Dictionary<string, AudioClip>();
-            else
-                _clips.Clear();
 
             if (_playSoundList == null)
                 _playSoundList = new List<AudioSource>();
@@ -64,13 +62,25 @@ namespace DOW
             BgmVolume = PlayerPrefs.GetFloat("bgmVolume", 1f);
             EffectVolume = PlayerPrefs.GetFloat("effectVolume", 1f);
 
+            LoadClips();
+
             SpawnPool(10);
         }
 
-		public IEnumerator ClipsLoad()
-		{
-			yield break;
-		}
+        private void LoadClips()
+        {
+            var clips = ResourceManager.GetResources<AudioClip>(eResourcePath.SOUND.GetPath());
+            if (clips == null)
+                return;
+
+            for (int i = 0, count = clips.Length; i < count; ++i)
+            {
+                if (clips[i] == null)
+                    continue;
+
+                _clips.Add(clips[i].name, clips[i]);
+            }
+        }
 
         public void Update(float dt) {}
 
@@ -309,12 +319,19 @@ namespace DOW
 
         public virtual void PushBGM(string soundName, bool isLoop = true)
         {
-            if (_playBGMStack == null)
+            if (_playBGMStack == null || !_clips.ContainsKey(soundName))
+                return;
+
+            PushBGM(_clips[soundName], isLoop);
+        }
+
+        public virtual void PushBGM(AudioClip clips, bool isLoop = true)
+        {
+            if (_playBGMStack == null || clips == null)
                 return;
 
             AudioSource currentAudio = GetSource();
-            if (_clips.ContainsKey(soundName))
-                currentAudio.clip = _clips[soundName];
+            currentAudio.clip = clips;
 
             currentAudio.playOnAwake = false;
 

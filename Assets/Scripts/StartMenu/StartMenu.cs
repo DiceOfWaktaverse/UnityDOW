@@ -1,7 +1,9 @@
 using DOW;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.Video;
 
 namespace DOW
@@ -9,23 +11,26 @@ namespace DOW
     public enum StartMenuEventType
     {
         LoadingSplashFinished,
-        StartSplashFinished
+        StartSplashFinished,
+        DifficultySelected,
     }
     public class StartMenu : MonoBehaviour, EventListener<StartMenuEventType>
     {
-        public AudioSource startMenuAudioSource;
-        public GameObject beacon;
+        [SerializeField]
+        protected AudioClip bgmClip = null;
         public static StartMenuStateMachine startMenuStateMachine = new StartMenuStateMachine();
 
-        //ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
+
         void Start()
         {
-            PopupManager.Instance.Initialize();
-            PopupManager.Instance.SetBeacon(beacon);
-            SoundManager.Instance.Initialize();
-
+            UIManager.Instance.InitUI(eSceneType.MAIN_MENU);
             startMenuStateMachine.StateInit();
-            this.EventStartListening<StartMenuEventType>();
+            this.EventStartListening();
+        }
+
+        void OnDestroy()
+        {
+            this.EventStopListening();
         }
 
         public void Update() {
@@ -38,17 +43,48 @@ namespace DOW
         public void OnEvent(StartMenuEventType eventType) {
             if (eventType == StartMenuEventType.LoadingSplashFinished) {
                 startMenuStateMachine.ChangeState<StartSplashState>();
-                SoundManager.Instance.PushBGM(startMenuAudioSource);
+                SoundManager.Instance.PushBGM(bgmClip);
             }
             if (eventType == StartMenuEventType.StartSplashFinished) {
                 startMenuStateMachine.ChangeState<MainMenuState>();
             }
+            if (eventType == StartMenuEventType.DifficultySelected) {
+                Debug.Log("Go to Next Scene");
+            }
         }
 
+        public static void OnClickDifficulty()
+        {
+            DifficultyPopup.OpenPopup();
+        }
 
-        public void OnDestroy() {
-            this.EventStopListening<StartMenuEventType>();
+        public static void OnClickPreference()
+        {
+            PreferencePopup.OpenPopup();
+        }
+
+        public static void OnClickShop()
+        {
+            ShopPopup.OpenPopup();
+        }
+
+        public static void OnClickBook()
+        {
+            SystemPopup.OpenPopup("¼³¸í", "¾ÆÁ÷ µµ°¨ ±â´ÉÀº ±¸ÇöµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "È®ÀÎ");
+        }
+
+        public static void OnClickCredit()
+        {
+            SystemPopup.OpenPopup("¼³¸í", "¾ÆÁ÷ Å©·¹µ÷Àº ±¸ÇöµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "È®ÀÎ");
+        }
+
+        public static void OnClickExit()
+        {
+#if UNITY_EDITOR
+            EditorApplication.ExitPlaymode();
+#else
+            Application.Quit();
+#endif
         }
     }
-
 }
