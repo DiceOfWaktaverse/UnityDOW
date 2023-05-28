@@ -14,8 +14,6 @@ namespace DOW
         public override bool OnEnter() 
         {
             if (!base.OnEnter()) return false;
-
-            Debug.Log("LoadingSplashState OnEnter");
             videoScreenPopup = VideoScreenPopup.OpenPopup();
 
             timer = 0f;
@@ -27,7 +25,6 @@ namespace DOW
 
             // if video is finished, close popup
             if (videoScreenPopup != null && videoScreenPopup.VideoPlayer.isPaused == true) {
-                Debug.Log("LoadingSplashState Update: video is finished");
                 EventManager.TriggerEvent(StartMenuEventType.LoadingSplashFinished);
                 return false;
             }
@@ -43,7 +40,6 @@ namespace DOW
                 videoScreenPopup.closeVideoScreen();
             }
             
-            Debug.Log("LoadingSplashState OnExit");
             return true;
         }
     }
