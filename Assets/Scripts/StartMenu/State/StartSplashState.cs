@@ -11,7 +11,6 @@ namespace DOW
         public override bool OnEnter()
         {
             startSplashPopup = StartSplashPopup.OpenPopup();
-
             return base.OnEnter();
         }
 

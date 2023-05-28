@@ -42,12 +42,12 @@ namespace DOW
 
         public void OnEvent(StartMenuEventType eventType) {
             if (eventType == StartMenuEventType.LoadingSplashFinished) {
-                startMenuStateMachine.ChangeState<StartSplashState>();
+                startMenuStateMachine.ChangeState<MainMenuState>();
                 SoundManager.Instance.PushBGM(bgmClip);
             }
-            if (eventType == StartMenuEventType.StartSplashFinished) {
-                startMenuStateMachine.ChangeState<MainMenuState>();
-            }
+            // if (eventType == StartMenuEventType.StartSplashFinished) {
+            //     startMenuStateMachine.ChangeState<MainMenuState>();
+            // }
             if (eventType == StartMenuEventType.DifficultySelected) {
                 Debug.Log("Go to Next Scene");
             }
@@ -70,12 +70,12 @@ namespace DOW
 
         public static void OnClickBook()
         {
-            SystemPopup.OpenPopup("¼³¸í", "¾ÆÁ÷ µµ°¨ ±â´ÉÀº ±¸ÇöµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "È®ÀÎ");
+            SystemPopup.OpenPopup("ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.", "È®ï¿½ï¿½");
         }
 
         public static void OnClickCredit()
         {
-            SystemPopup.OpenPopup("¼³¸í", "¾ÆÁ÷ Å©·¹µ÷Àº ±¸ÇöµÇÁö ¾Ê¾Ò½À´Ï´Ù.", "È®ÀÎ");
+            SystemPopup.OpenPopup("ï¿½ï¿½ï¿½ï¿½", "ï¿½ï¿½ï¿½ï¿½ Å©ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾Ò½ï¿½ï¿½Ï´ï¿½.", "È®ï¿½ï¿½");
         }
 
         public static void OnClickExit()
