@@ -51,6 +51,8 @@ namespace DOW
                 {
                     ShopData.coin -= ShopData.card_1.cardCost;
                     Debug.Log("Card ID: " + ShopData.card_1.cardId);
+
+                    ShopData.card_1 = null;
                 }
                 else Debug.Log("can't buy or already sold");
             }
@@ -60,6 +62,8 @@ namespace DOW
                 {
                     ShopData.coin -= ShopData.card_2.cardCost;
                     Debug.Log("Card ID: " + ShopData.card_2.cardId);
+
+                    ShopData.card_2 = null;
                 }
                 else Debug.Log("can't buy or already sold");
             }
@@ -69,6 +73,8 @@ namespace DOW
                  {
                     ShopData.coin -= ShopData.card_3.cardCost;
                     Debug.Log("Card ID: " + ShopData.card_3.cardId);
+
+                    ShopData.card_3 = null;
                 }
                 else Debug.Log("can't buy or already sold");
             }
