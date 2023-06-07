@@ -70,7 +70,8 @@ namespace DOW
 
         public static void OnClickBook()
         {
-            SystemPopup.OpenPopup("����", "���� ���� ����� �������� �ʾҽ��ϴ�.", "Ȯ��");
+            // TODO: stagemap is for temporary use. Replace to book popup when ready
+            StageMapPopup.OpenPopup();
         }
 
         public static void OnClickCredit()

@@ -2,17 +2,26 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class StageMap : MonoBehaviour
+namespace DOW
 {
-    // Start is called before the first frame update
-    void Start()
+    public class StageMap : MonoBehaviour
     {
-        
-    }
+        private List<StageData> stageDatas = null;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        // Start is called before the first frame update
+        void Start()
+        {
+            stageDatas = TableManager.GetTable<StageTable>().GetAllList();
+
+            stageDatas.ForEach((data) => {
+                Debug.Log(data);
+            });
+        }
+
+        // Update is called once per frame
+        void Update()
+        {
+
+        }
     }
 }
