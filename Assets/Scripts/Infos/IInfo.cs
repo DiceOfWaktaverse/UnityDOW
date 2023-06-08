@@ -20,15 +20,15 @@ namespace DOW
     public interface IInfo
     {
         /// <summary>
-        /// ÃÊ±âÈ­
+        /// ï¿½Ê±ï¿½È­
         /// </summary>
         void Initialize();
         /// <summary>
-        /// Save Á÷·ÄÈ­ ¹× ÀúÀå.
+        /// Save ï¿½ï¿½ï¿½ï¿½È­ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½.
         /// </summary>
         void SaveInfo();
         /// <summary>
-        /// Load ºí·¯¿À±â.
+        /// Load ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½.
         /// </summary>
         void LoadInfo();
     }

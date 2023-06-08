@@ -21,6 +21,8 @@ namespace DOW
 
                     #region 테이블 세팅
                     instance.AddTable(typeof(SkillCardTable), new SkillCardTable());
+                    instance.AddTable(typeof(ChapterTable), new ChapterTable());
+                    instance.AddTable(typeof(StageTable), new StageTable());
                     #endregion
                 }
                 return instance;

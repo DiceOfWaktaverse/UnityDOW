@@ -10,7 +10,7 @@ namespace DOW
     public class DifficultyPopupData //다른 데이터가 필요할 경우 사용예정.
     {
     }
-    public class DifficultyPopup : Popup<DifficultyPopupData>
+    public class DifficultyPopup : Popup<DifficultyPopupData>, EventListenerBase
     {
         public override void Initialize()
         {
@@ -47,9 +47,7 @@ namespace DOW
                 UserInfo.Instance.Difficulty = eDifficulty.CRASH;
             }
 
-            // TODO: proceed to next scene
-            Debug.Log(UserInfo.Instance.Difficulty);
-            //SceneManager.LoadScene("StageSelect");
+            EventManager.TriggerEvent(StartMenuEventType.DifficultySelected);
         }
 
         public virtual void closePreference()
