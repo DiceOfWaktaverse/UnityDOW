@@ -438,6 +438,7 @@ namespace DOW
         {
             MasterVolume = _volume;
             PlayerPrefs.SetFloat("masterVolume", MasterVolume);
+            PlayerPrefs.Save();
             BackgroundVolumeControl();
             EffectVolumeControl();
         }
@@ -445,12 +446,14 @@ namespace DOW
         {
             BgmVolume = _volume;
             PlayerPrefs.SetFloat("bgmVolume", BgmVolume);
+            PlayerPrefs.Save();
             BackgroundVolumeControl();
         }
         public void SetEffectVolume(float _volume)
         {
             EffectVolume = _volume;
             PlayerPrefs.SetFloat("effectVolume", EffectVolume);
+            PlayerPrefs.Save();
             EffectVolumeControl();
         }
 

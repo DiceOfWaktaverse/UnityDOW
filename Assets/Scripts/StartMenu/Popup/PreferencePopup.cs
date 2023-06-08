@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PreferencePopupData
-    //´Ù¸¥ µ¥ÀÌÅÍ°¡ ÇÊ¿äÇÒ °æ¿ì »ç¿ë¿¹Á¤.
+    //ï¿½Ù¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½Ê¿ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½ë¿¹ï¿½ï¿½.
 {
 
 }
@@ -13,6 +13,7 @@ public class PreferencePopup : Popup<PreferencePopupData>
 {
     public override void Initialize()
     {
+        
     }
 
     public override void InitializeUI()
@@ -21,6 +22,7 @@ public class PreferencePopup : Popup<PreferencePopupData>
 
     public override void Refresh()
     {
+
     }
 
     public static PreferencePopup OpenPopup()
