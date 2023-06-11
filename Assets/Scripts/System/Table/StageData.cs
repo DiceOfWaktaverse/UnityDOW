@@ -36,6 +36,7 @@ namespace DOW
         public StageData(Dictionary<string, string> data) : base(data) { }
 
         public string Stage { get; protected set; } = "";
+        public string Chapter {get; protected set;} = "";
         public string Sprite { get; protected set; } = "";
         public string Label { get; protected set; } = "";
         public eStageType Type { get; protected set; } = eStageType.NONE;
@@ -66,6 +67,9 @@ namespace DOW
                 switch (it.Current.Key)
                 {
                     case "Stage"://상위에서 UniqueKeyName으로 동작중.
+                        break;
+                    case "Chapter":
+                        Chapter = it.Current.Value;
                         break;
                     case "Sprite":
                         Sprite = it.Current.Value;

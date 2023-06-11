@@ -4,11 +4,11 @@ using UnityEngine;
 
 namespace DOW
 {
-    public class StageMapPopup : Popup<StageMapPopup>
+    public class ChapterMapPopup : Popup<ChapterMapPopup>
     {
-        public static StageMapPopup OpenPopup()
+        public static ChapterMapPopup OpenPopup()
         {
-            StageMapPopup popup = PopupManager.OpenPopup<StageMapPopup>("StageMapPopup");
+            ChapterMapPopup popup = PopupManager.OpenPopup<ChapterMapPopup>("ChapterMapPopup");
             return popup;
         }
 
