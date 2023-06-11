@@ -42,7 +42,7 @@ namespace DOW
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
-                PopupManager.ClosePopup<ChapterMapPopup>();
+                PopupManager.ClosePopup<MulliganPopup>();
             }
         }
 
