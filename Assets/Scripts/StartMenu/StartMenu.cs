@@ -71,7 +71,7 @@ namespace DOW
         public static void OnClickBook()
         {
             // TODO: stagemap is for temporary use. Replace to book popup when ready
-            StageMapPopup.OpenPopup();
+            ChapterMapPopup.OpenPopup();
         }
 
         public static void OnClickCredit()
