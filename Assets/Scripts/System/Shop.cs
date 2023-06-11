@@ -29,7 +29,7 @@ namespace DOW
         public static DumyCardData card_3 = null;
 
         public static int cardDeck_1_Cost = 1;
-        public static int cardDeck_2_Cost = 1;
+        public static int cardDeck_2_Cost = 1 ;
 
         //임시로 사용중인 플레잉어 재화
         public static int coin;
