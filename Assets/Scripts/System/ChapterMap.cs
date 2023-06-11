@@ -82,5 +82,12 @@ namespace DOW
             Chevron.SetActive(false);
         }
 
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PopupManager.ClosePopup<ChapterMapPopup>();
+            }
+        }
     }
 }
