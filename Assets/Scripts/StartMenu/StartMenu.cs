@@ -70,13 +70,15 @@ namespace DOW
 
         public static void OnClickBook()
         {
-            // TODO: stagemap is for temporary use. Replace to book popup when ready
+            // TODO: chaptermap is for temporary use. Replace to book popup when ready
             ChapterMapPopup.OpenPopup();
         }
 
         public static void OnClickCredit()
         {
-            SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
+            // SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
+            // TODO: mulligan is for temporary use. Replace to credit popup when ready
+            MulliganPopup.OpenPopup();
         }
 
         public static void OnClickExit()

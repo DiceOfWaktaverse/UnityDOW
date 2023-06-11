@@ -2,17 +2,28 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MuliganPopup : MonoBehaviour
+namespace DOW
 {
-    // Start is called before the first frame update
-    void Start()
+    public class MulliganPopup : Popup<MulliganPopup>
     {
-        
-    }
+        public static MulliganPopup OpenPopup()
+        {
+            MulliganPopup popup = PopupManager.OpenPopup<MulliganPopup>("MulliganPopup");
+            return popup;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override void Initialize()
+        {
+
+        }
+
+        public override void InitializeUI()
+        {
+
+        }
+
+        public override void Refresh()
+        {
+        }
     }
 }
