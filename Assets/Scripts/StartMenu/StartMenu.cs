@@ -49,7 +49,7 @@ namespace DOW
             //     startMenuStateMachine.ChangeState<MainMenuState>();
             // }
             if (eventType == StartMenuEventType.DifficultySelected) {
-                Debug.Log("Go to Next Scene");
+                LoadingManager.Instance.LoadScene("StartMenu");
             }
         }
 
