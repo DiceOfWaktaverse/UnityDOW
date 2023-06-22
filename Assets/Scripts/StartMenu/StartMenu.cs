@@ -49,8 +49,7 @@ namespace DOW
             //     startMenuStateMachine.ChangeState<MainMenuState>();
             // }
             if (eventType == StartMenuEventType.DifficultySelected) {
-                SoundManager.Instance.PopBGM();
-                LoadingManager.Instance.LoadScene("BattleStage");
+                Debug.Log("Go to Next Scene");
             }
         }
 
