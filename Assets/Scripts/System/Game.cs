@@ -20,7 +20,7 @@ namespace DOW
             DOWGameManager.Instance.Init();
             UIManager.Instance.InitUI(eSceneType.NONE);
 
-            LoadingManager.Instance.LoadScene("StartMenu");
+            LoadingManager.Instance.LoadScene("BattleStage");
         }
 
         // Update is called once per frame
