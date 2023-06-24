@@ -18,5 +18,20 @@ namespace DOW
             if (stateMachine.CurState != null)
                 stateMachine.CurState.Update(Time.deltaTime);
         }
+
+        public static void OnClickShop()
+        {
+            ShopPopup.OpenPopup();
+        }
+
+        public static void OnClickPreference()
+        {
+            BattlestageSettingPopup.OpenPopup();
+        }
+
+        public static void OnClickTurnEnd()
+        {
+            BattleEndPopup.OpenPopup();
+        }
     }
 }
