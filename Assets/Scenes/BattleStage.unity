@@ -210,6 +210,7 @@ GameObject:
   - component: {fileID: 59114448}
   - component: {fileID: 59114450}
   - component: {fileID: 59114449}
+  - component: {fileID: 59114451}
   m_Layer: 0
   m_Name: BattleStage
   m_TagString: Untagged
@@ -277,6 +278,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 59114447}
   m_CullTransparentMesh: 1
+--- !u!114 &59114451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 59114447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c5ca7713797f4f72aea64b5ca404139, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &68162374
 GameObject:
   m_ObjectHideFlags: 0
@@ -517,7 +530,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -20.5, y: 0}
+  m_AnchoredPosition: {x: -20.50003, y: 0}
   m_SizeDelta: {x: -295, y: 170}
   m_Pivot: {x: 0.5, y: 0}
 --- !u!114 &182650571
@@ -2081,7 +2094,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 981326829}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 59114451}
+        m_TargetAssemblyTypeName: DOW.BattleStage, Assembly-CSharp
+        m_MethodName: OnClickShop
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!114 &981326829
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3453,9 +3478,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 2077899646}
-        m_TargetAssemblyTypeName: DOW.BattlestageSettingPopup, Assembly-CSharp
-        m_MethodName: OpenPopup
+      - m_Target: {fileID: 59114451}
+        m_TargetAssemblyTypeName: DOW.BattleStage, Assembly-CSharp
+        m_MethodName: OnClickPreference
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
