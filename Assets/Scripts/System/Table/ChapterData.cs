@@ -25,14 +25,7 @@ namespace DOW
         public ChapterData(Dictionary<string, string> data) : base(data) { }
 
         public string Chapter { get; protected set; } = "";
-        public string Sprite { get; protected set; } = "";
         public string Label { get; protected set; } = "";
-
-        protected override string GetUniqueKeyName()
-        {
-            return "Chapter";
-        }
-
         public override void Init()
         {
             base.Init();
@@ -48,12 +41,9 @@ namespace DOW
             {
                 switch (it.Current.Key)
                 {
-                    case "Chapter"://상위에서 UniqueKeyName으로 동작중.
+                    case "KEY"://상위에서 UniqueKeyName으로 동작중.
                         break;
-                    case "Sprite":
-                        Sprite = it.Current.Value;
-                        break;
-                    case "Label":
+                    case "LABEL":
                         Label = it.Current.Value;
                         break;
                 }

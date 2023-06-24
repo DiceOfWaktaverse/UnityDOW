@@ -684,7 +684,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5498c581554e5422395bad599adb7020, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CurrentStage: 4
+  CurrentStage: 1
   MaxDisplayCount: 3
   Layout: {fileID: 5330618516126540935}
   ChapterCard: {fileID: 7002595498658200066}

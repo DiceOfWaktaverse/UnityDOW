@@ -37,7 +37,6 @@ namespace DOW
 
         public string Stage { get; protected set; } = "";
         public string Chapter {get; protected set;} = "";
-        public string Sprite { get; protected set; } = "";
         public string Label { get; protected set; } = "";
         public eStageType Type { get; protected set; } = eStageType.NONE;
         public string CompensationA { get; protected set; } = "";
@@ -45,11 +44,6 @@ namespace DOW
         public string CompensationC { get; protected set; } = "";
         public string EnemyFieldCard { get; protected set; } = "";
         public List<string> Enemy { get; protected set; } = new List<string>();
-
-        protected override string GetUniqueKeyName()
-        {
-            return "Stage";
-        }
 
         public override void Init()
         {
@@ -66,48 +60,36 @@ namespace DOW
             {
                 switch (it.Current.Key)
                 {
-                    case "Stage"://상위에서 UniqueKeyName으로 동작중.
+                    case "KEY"://상위에서 UniqueKeyName으로 동작중.
                         break;
-                    case "Chapter":
+                    case "CHAPTER_KEY":
                         Chapter = it.Current.Value;
                         break;
-                    case "Sprite":
-                        Sprite = it.Current.Value;
-                        break;
-                    case "Label":
+                    case "LABEL":
                         Label = it.Current.Value;
                         break;
-                    case "Type":
+                    case "TYPE":
                         eStageType type;
                         if (Enum.TryParse<eStageType>(it.Current.Value, out type))
                             Type = type;
                         else
-                            Debug.LogWarning("Failed to parse eStageType : " + it.Current.Value + ")");
                             Type = eStageType.NONE;
                         break;
-                    case "CompensationA":
+                    case "COMPENSATION_A":
                         CompensationA = it.Current.Value;
                         break;
-                    case "CompensationB":
+                    case "COMPENSATION_B":
                         CompensationB = it.Current.Value;
                         break;
-                    case "CompensationC":
+                    case "COMPENSATION_C":
                         CompensationC = it.Current.Value;
                         break;
-                    case "EnemyFieldCard":
+                    case "ENEMY_FIELD_CARD":
                         EnemyFieldCard = it.Current.Value;
                         break;
-                    case "Enemy1":
-                    case "Enemy2":
-                    case "Enemy3":
-                    case "Enemy4":
-                    case "Enemy5":
-                    case "Enemy6":
-                    case "Enemy7":
-                    case "Enemy8":
-                    case "Enemy9":
-                    case "Enemy10":
-                        Enemy.Add(it.Current.Value);
+                    default: 
+                        if (it.Current.Key.Contains("ENEMY"))
+                            Enemy.Add(it.Current.Value);
                         break;
                 }
             }
