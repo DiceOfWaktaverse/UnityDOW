@@ -7,8 +7,8 @@ namespace DOW
 {
     public class ChapterMap : MonoBehaviour
     {
-        [SerializeField, Min(0)]
-        public int CurrentStage = 0;
+        [SerializeField, Min(1)]
+        public int CurrentStage = 1;
 
         [SerializeField, Range(2, 5)]
         public int MaxDisplayCount = 3; // 최대 표시 갯수
@@ -30,7 +30,7 @@ namespace DOW
             currentChapter = TableManager.GetTable<StageTable>().Get("" + CurrentStage).Chapter;
             chapterData = TableManager.GetTable<ChapterTable>().GetAllList();
 
-            int currentChapterIndex = int.Parse(currentChapter);
+            int currentChapterIndex = int.Parse(currentChapter) - 1;
             int windowStartIndex = currentChapterIndex - ((MaxDisplayCount + 1) / 2 - 1);
             int windowEndIndex = currentChapterIndex + MaxDisplayCount / 2;
             if (windowStartIndex < 0)

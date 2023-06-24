@@ -82,10 +82,8 @@ namespace DOW
         {
             var data = new Dictionary<string, List<Dictionary<string, string>>>();
             //테이블 구조의 한글은 별로 효율 면에서는 안좋지만, 편의성을 위해서 채택됨.
-            GetDesignData(data, "캐릭터카드");
-            GetDesignData(data, "스킬카드");
-            GetDesignData(data, "Chapter");
-            GetDesignData(data, "Stage");
+            GetDesignData(data, "chapter");
+            GetDesignData(data, "stage");
 
             return data;
         }
@@ -109,13 +107,10 @@ namespace DOW
 
                 switch (name)
                 {
-                    case "스킬카드":
-                        TableManager.GetTable<SkillCardTable>().SetTable(datas);
-                        break;
-                    case "Stage":
+                    case "stage":
                         TableManager.GetTable<StageTable>().SetTable(datas);
                         break;
-                    case "Chapter":
+                    case "chapter":
                         TableManager.GetTable<ChapterTable>().SetTable(datas);
                         break;
                     default:
