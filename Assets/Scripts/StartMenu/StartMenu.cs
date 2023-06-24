@@ -76,7 +76,8 @@ namespace DOW
 
         public static void OnClickBook()
         {
-
+            Debug.Log("hello");
+            CharacterCardGotchaPopup.OpenPopup();
         }
 
         public static void OnClickCredit()
