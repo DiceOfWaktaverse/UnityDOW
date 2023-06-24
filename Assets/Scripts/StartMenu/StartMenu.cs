@@ -33,22 +33,27 @@ namespace DOW
             this.EventStopListening();
         }
 
-        public void Update() {
+        public void Update()
+        {
             // input deltatime to current state
-            if (startMenuStateMachine.CurState != null) {
+            if (startMenuStateMachine.CurState != null)
+            {
                 startMenuStateMachine.CurState.Update(Time.deltaTime);
             }
         }
 
-        public void OnEvent(StartMenuEventType eventType) {
-            if (eventType == StartMenuEventType.LoadingSplashFinished) {
+        public void OnEvent(StartMenuEventType eventType)
+        {
+            if (eventType == StartMenuEventType.LoadingSplashFinished)
+            {
                 startMenuStateMachine.ChangeState<MainMenuState>();
                 SoundManager.Instance.PushBGM(bgmClip);
             }
             // if (eventType == StartMenuEventType.StartSplashFinished) {
             //     startMenuStateMachine.ChangeState<MainMenuState>();
             // }
-            if (eventType == StartMenuEventType.DifficultySelected) {
+            if (eventType == StartMenuEventType.DifficultySelected)
+            {
                 SoundManager.Instance.PopBGM();
                 LoadingManager.Instance.LoadScene("BattleStage");
             }
@@ -71,15 +76,12 @@ namespace DOW
 
         public static void OnClickBook()
         {
-            // TODO: chaptermap is for temporary use. Replace to book popup when ready
-            ChapterMapPopup.OpenPopup();
+
         }
 
         public static void OnClickCredit()
         {
-            // SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
-            // TODO: mulligan is for temporary use. Replace to credit popup when ready
-            MulliganPopup.OpenPopup();
+            SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
         }
 
         public static void OnClickExit()
