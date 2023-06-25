@@ -20,9 +20,16 @@ namespace DOW
                     instance = new TableManager();
 
                     #region 테이블 세팅
-                    instance.AddTable(typeof(SkillCardTable), new SkillCardTable());
                     instance.AddTable(typeof(ChapterTable), new ChapterTable());
                     instance.AddTable(typeof(StageTable), new StageTable());
+                    instance.AddTable(typeof(CardPackTable), new CardPackTable());
+                    instance.AddTable(typeof(CardTable), new CardTable());
+                    instance.AddTable(typeof(TagTable), new TagTable());
+                    instance.AddTable(typeof(CharacterCardTable), new CharacterCardTable());
+                    instance.AddTable(typeof(FieldCardTable), new FieldCardTable());
+                    instance.AddTable(typeof(InstantCardTable), new InstantCardTable());
+                    instance.AddTable(typeof(ItemCardTable), new ItemCardTable());
+                    instance.AddTable(typeof(EnemyTable), new EnemyTable());
                     #endregion
                 }
                 return instance;

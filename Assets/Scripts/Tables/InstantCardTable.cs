@@ -2,7 +2,7 @@ using System.Collections.Generic;
 
 namespace DOW
 {
-    public class StageTable : TableBase<StageData>
+    public class InstantCardTable : TableBase<InstantCardData>
     {
         public override void SetTable(List<Dictionary<string, string>> array)
         {

@@ -81,9 +81,16 @@ namespace DOW
         private Dictionary<string, List<Dictionary<string, string>>> GetData()//데이터 읽어옵시다.
         {
             var data = new Dictionary<string, List<Dictionary<string, string>>>();
-            //테이블 구조의 한글은 별로 효율 면에서는 안좋지만, 편의성을 위해서 채택됨.
             GetDesignData(data, "chapter");
             GetDesignData(data, "stage");
+            GetDesignData(data, "card_pack");
+            GetDesignData(data, "card_base");
+            GetDesignData(data, "tag_base");
+            GetDesignData(data, "char_base");
+            GetDesignData(data, "field_base");
+            GetDesignData(data, "instant_base");
+            GetDesignData(data, "item_base");
+            GetDesignData(data, "enemy_base");
 
             return data;
         }
@@ -101,17 +108,41 @@ namespace DOW
             while (it.MoveNext())
             {
                 var name = it.Current.Key;
-                var datas = it.Current.Value;
-                if (name == "" || datas.Count < 1)
+                var data = it.Current.Value;
+                if (name == "" || data.Count < 1)
                     continue;
 
                 switch (name)
                 {
                     case "stage":
-                        TableManager.GetTable<StageTable>().SetTable(datas);
+                        TableManager.GetTable<StageTable>().SetTable(data);
                         break;
                     case "chapter":
-                        TableManager.GetTable<ChapterTable>().SetTable(datas);
+                        TableManager.GetTable<ChapterTable>().SetTable(data);
+                        break;
+                    case "card_pack":
+                        TableManager.GetTable<CardPackTable>().SetTable(data);
+                        break;
+                    case "card_base":
+                        TableManager.GetTable<CardTable>().SetTable(data);
+                        break;
+                    case "tag_base":
+                        TableManager.GetTable<TagTable>().SetTable(data);
+                        break;
+                    case "char_base":
+                        TableManager.GetTable<CharacterCardTable>().SetTable(data);
+                        break;
+                    case "field_base":
+                        TableManager.GetTable<FieldCardTable>().SetTable(data);
+                        break;
+                    case "instant_base":
+                        TableManager.GetTable<InstantCardTable>().SetTable(data);
+                        break;
+                    case "item_base":
+                        TableManager.GetTable<ItemCardTable>().SetTable(data);
+                        break;
+                    case "enemy_base":
+                        TableManager.GetTable<EnemyTable>().SetTable(data);
                         break;
                     default:
                         break;

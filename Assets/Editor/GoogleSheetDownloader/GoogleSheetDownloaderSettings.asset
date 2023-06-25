@@ -16,14 +16,14 @@ MonoBehaviour:
   SheetName:
   - chapter
   - stage
-  - pack
-  - tag
+  - card_pack
+  - tag_base
   - card_base
   - char_base
   - instant_base
   - field_base
   - item_base
   - skill_base
-  - skill_tag
   - enemy_base
+  - 
   ClassName: []
