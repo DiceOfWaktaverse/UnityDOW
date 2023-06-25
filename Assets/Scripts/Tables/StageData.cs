@@ -1,8 +1,5 @@
-using DOW;
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DOW
 {
@@ -61,6 +58,9 @@ namespace DOW
                 switch (it.Current.Key)
                 {
                     case "KEY"://상위에서 UniqueKeyName으로 동작중.
+                        // ignoring last line that is empty in csv file
+                        if (it.Current.Value == "")
+                            return;
                         break;
                     case "CHAPTER_KEY":
                         Chapter = it.Current.Value;

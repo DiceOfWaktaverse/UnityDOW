@@ -3,26 +3,26 @@ using System.Collections.Generic;
 namespace DOW
 {
 
-    public class ChapterData : TableData
+    public class ItemCardData : TableData
     {
-        private static ChapterTable table = null;
+        private static ItemCardTable table = null;
 
         /// <summary>
         /// 추적을 용이하게 하기 위함
         /// </summary>
         /// <param name="key">카드명</param>
-        /// <returns>ChapterData</returns>
-        public static ChapterData Get(string key)
+        /// <returns>ItemCardData</returns>
+        public static ItemCardData Get(string key)
         {
             if (table == null)
-                table = TableManager.GetTable<ChapterTable>();
+                table = TableManager.GetTable<ItemCardTable>();
 
             return table.Get(key);
         }
 
-        public ChapterData(Dictionary<string, string> data) : base(data) { }
+        public ItemCardData(Dictionary<string, string> data) : base(data) { }
 
-        public string Label { get; protected set; } = "";
+        public List<string> Skils { get; protected set; } = new List<string>();
         public override void Init()
         {
             base.Init();
@@ -43,8 +43,9 @@ namespace DOW
                         if (it.Current.Value == "")
                             return;
                         break;
-                    case "LABEL":
-                        Label = it.Current.Value;
+                    default:
+                        if (it.Current.Key.Contains("SKILL"))
+                            Skils.Add(it.Current.Value);
                         break;
                 }
             }

@@ -1,10 +1,8 @@
-using System.Collections;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DOW
 {
-    public class SkillCardTable : TableBase<SkillCardData>
+    public class ItemCardTable : TableBase<ItemCardData>
     {
         public override void SetTable(List<Dictionary<string, string>> array)
         {
