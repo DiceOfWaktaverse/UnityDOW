@@ -65,9 +65,6 @@ namespace DOW
                 switch (it.Current.Key)
                 {
                     case "KEY"://상위에서 UniqueKeyName으로 동작중.
-                        // ignoring last line that is empty in csv file
-                        if (it.Current.Value == "")
-                            return;
                         break;
                     case "CARD_PACK_KEY":
                         CardPack = it.Current.Value;
@@ -86,7 +83,8 @@ namespace DOW
                         Description = it.Current.Value;
                         break;
                     case "TAGS":
-                        Tags = it.Current.Value.Split('|').ToList<string>();
+                        if (it.Current.Value != "")
+                            Tags = it.Current.Value.Split('|').ToList<string>();
                         break;
                     case "RESTRICTION":
                         string[] fragment = it.Current.Value.Split('|');

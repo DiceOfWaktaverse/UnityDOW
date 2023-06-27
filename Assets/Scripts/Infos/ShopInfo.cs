@@ -7,6 +7,8 @@ namespace DOW
     [System.Serializable]
     public class ShopInfo : IInfo
     {
+        public long ShopSeed { get; private set; } = -1;
+
         public ShopInfo()
         {
             Initialize();
@@ -14,6 +16,7 @@ namespace DOW
 
         public void Initialize()
         {
+            ShopSeed = System.DateTime.Now.Ticks;
         }
         public void SaveInfo()
         {

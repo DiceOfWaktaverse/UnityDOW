@@ -44,6 +44,27 @@ namespace DOW
                 }
             }
         }
+        public T GetInfo<T>() where T : class, IInfo
+        {
+            var type = typeof(T);
+            if (type == typeof(CardInfo))
+            {
+                return Infos[eInfoType.CARD] as T;
+            }
+            else if (type == typeof(BattleInfo))
+            {
+                return Infos[eInfoType.BATTLE] as T;
+            }
+            else if (type == typeof(GoodsInfo))
+            {
+                return Infos[eInfoType.GOODS] as T;
+            }
+            else if (type == typeof(ShopInfo))
+            {
+                return Infos[eInfoType.SHOP] as T;
+            }
+            return null;
+        }
         /// <summary>
         /// ���� ���̺굵 �ؾ���
         /// </summary>

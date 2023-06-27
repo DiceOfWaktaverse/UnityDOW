@@ -91,6 +91,7 @@ namespace DOW
             GetDesignData(data, "instant_base");
             GetDesignData(data, "item_base");
             GetDesignData(data, "enemy_base");
+            GetDesignData(data, "skill_base");
 
             return data;
         }
@@ -143,6 +144,9 @@ namespace DOW
                         break;
                     case "enemy_base":
                         TableManager.GetTable<EnemyTable>().SetTable(data);
+                        break;
+                    case "skill_base":
+                        TableManager.GetTable<SkillTable>().SetTable(data);
                         break;
                     default:
                         break;

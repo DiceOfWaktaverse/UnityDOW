@@ -17,14 +17,16 @@ namespace DOW
         [SerializeField]
         public GameObject CardTemplate = null;
 
-
         private int currentCount = 0;
 
         private List<GameObject> cardList = new List<GameObject>();
         private bool initial = true;
 
+        private List<string> cardPool = null;
+
         void Start()
         {
+            // 카드 수를 정하고 그에 맞게 카드 게임오브젝트를 생성해둠
             currentCount = MaxCardCount;
             for (int i = 0; i < MaxCardCount; ++i)
             {
@@ -32,8 +34,9 @@ namespace DOW
                 cardList.Add(card);
             }
             CardTemplate.SetActive(false);
-            // TODO: replace with real seed
-            Random.InitState(0);
+
+            cardPool = TableManager.GetTable<CardTable>().GetKey();
+            Random.InitState(System.DateTime.Now.Millisecond);
             CardMulligan();
             initial = false;
         }
@@ -54,17 +57,14 @@ namespace DOW
 
             // random select int
             // TODO: replace this with real logic, including Seeding
-            List<int> cardNoList = new List<int>();
+            List<string> cardNoList = new List<string>();
             for (int i = 0; i < currentCount; ++i)
             {
-                cardNoList.Add(Random.Range(0, 200));
-            }
-
-            // set card
-            // TODO: repace this with real card
-            for (int i = 0; i < currentCount; ++i)
-            {
-                cardList[i].GetComponentInChildren<Text>().text = "Card " + cardNoList[i].ToString();
+                Debug.Log("cardPool.Count: " + cardPool.Count);
+                int cardKeyIndex = Random.Range(0, cardPool.Count);
+                Debug.Log("cardKeyIndex: " + cardKeyIndex);
+                Debug.Log("cardKeyIndex: " + cardPool[cardKeyIndex]);
+                cardList[i].GetComponent<CardUI>().LoadCardData(cardPool[cardKeyIndex]);
             }
         }
     }

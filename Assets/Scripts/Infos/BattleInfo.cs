@@ -15,7 +15,9 @@ namespace DOW
 
         public void Initialize()
         {
+            BatlteSeed = System.DateTime.Now.Ticks;
         }
+
         public void SaveInfo()
         {
         }

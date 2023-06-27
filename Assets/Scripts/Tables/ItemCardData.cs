@@ -44,7 +44,7 @@ namespace DOW
                             return;
                         break;
                     default:
-                        if (it.Current.Key.Contains("SKILL"))
+                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
                             Skils.Add(it.Current.Value);
                         break;
                 }

@@ -26,6 +26,9 @@ namespace DOW
             UIManager.Instance.InitUI(eSceneType.MAIN_MENU);
             startMenuStateMachine.StateInit();
             this.EventStartListening();
+
+            string a = TableManager.GetTable<CardTable>().ToString();
+            Debug.Log(a);
         }
 
         void OnDestroy()
@@ -71,12 +74,11 @@ namespace DOW
 
         public static void OnClickShop()
         {
-            ShopPopup.OpenPopup();
+            MulliganPopup.OpenPopup();
         }
 
         public static void OnClickBook()
         {
-            Debug.Log("hello");
             CharacterCardGotchaPopup.OpenPopup();
         }
 
