@@ -57,6 +57,11 @@ namespace DOW
             return datas;
         }
 
+        public List<string> GetKey()
+        {
+            return datas.Keys.ToList();
+        }
+
         protected virtual bool Add(T data)
         {
             if (ContainsKey(data.GetKey()))
@@ -101,6 +106,19 @@ namespace DOW
         public virtual bool ContainsKey(string key)
         {
             return datas.ContainsKey(key);
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+            var it = datas.GetEnumerator();
+
+            while (it.MoveNext())
+            {
+                str += it.Current.Value.ToString() + "\n";
+            }
+
+            return str;
         }
     }
 }

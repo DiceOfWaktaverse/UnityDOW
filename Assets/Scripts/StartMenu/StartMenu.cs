@@ -1,10 +1,5 @@
-using DOW;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Video;
 
 namespace DOW
 {
@@ -71,12 +66,11 @@ namespace DOW
 
         public static void OnClickShop()
         {
-            ShopPopup.OpenPopup();
+            MulliganPopup.OpenPopup();
         }
 
         public static void OnClickBook()
         {
-            Debug.Log("hello");
             CharacterCardGotchaPopup.OpenPopup();
         }
 
@@ -87,11 +81,11 @@ namespace DOW
 
         public static void OnClickExit()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             EditorApplication.ExitPlaymode();
-#else
+            #else
             Application.Quit();
-#endif
+            #endif
         }
     }
 }

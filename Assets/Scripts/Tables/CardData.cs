@@ -44,6 +44,7 @@ namespace DOW
 
         public string CardPack { get; protected set; } = "";
         public eCardType Type { get; protected set; } = eCardType.NONE;
+        public string Illust { get; protected set; } = "9999";
         public string Label { get; protected set; } = "";
         public string Description { get; protected set; } = "";
         public List<string> Tags { get; protected set; } = new List<string>();
@@ -65,9 +66,6 @@ namespace DOW
                 switch (it.Current.Key)
                 {
                     case "KEY"://상위에서 UniqueKeyName으로 동작중.
-                        // ignoring last line that is empty in csv file
-                        if (it.Current.Value == "")
-                            return;
                         break;
                     case "CARD_PACK_KEY":
                         CardPack = it.Current.Value;
@@ -79,6 +77,10 @@ namespace DOW
                         else
                             Type = eCardType.NONE;
                         break;
+                    case "ILLUST":
+                        if (it.Current.Value == "") break;
+                        Illust = it.Current.Value;
+                        break;
                     case "LABEL":
                         Label = it.Current.Value;
                         break;
@@ -86,7 +88,8 @@ namespace DOW
                         Description = it.Current.Value;
                         break;
                     case "TAGS":
-                        Tags = it.Current.Value.Split('|').ToList<string>();
+                        if (it.Current.Value != "")
+                            Tags = it.Current.Value.Split('|').ToList<string>();
                         break;
                     case "RESTRICTION":
                         string[] fragment = it.Current.Value.Split('|');

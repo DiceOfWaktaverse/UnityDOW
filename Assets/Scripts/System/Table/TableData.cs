@@ -72,5 +72,18 @@ namespace DOW
 
             return long.Parse(val);
         }
+
+        public override string ToString()
+        {
+            string str = "";
+            var it = data.GetEnumerator();
+
+            while (it.MoveNext())
+            {
+                str += it.Current.Value + ", ";
+            }
+
+            return str;
+        }
     }
 }

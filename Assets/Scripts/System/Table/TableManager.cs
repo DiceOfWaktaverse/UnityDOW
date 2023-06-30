@@ -30,6 +30,7 @@ namespace DOW
                     instance.AddTable(typeof(InstantCardTable), new InstantCardTable());
                     instance.AddTable(typeof(ItemCardTable), new ItemCardTable());
                     instance.AddTable(typeof(EnemyTable), new EnemyTable());
+                    instance.AddTable(typeof(SkillTable), new SkillTable());
                     #endregion
                 }
                 return instance;

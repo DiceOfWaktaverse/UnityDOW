@@ -84,6 +84,8 @@ namespace DOW
                         DefenceFactor = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
                         break;
                     case "PATTERN":
+                        if (it.Current.Value == "")
+                            break;
                         string[] fragmant = it.Current.Value.Split('|');
                         for (int i = 0; i < fragmant.Length; i++)
                         {
@@ -91,7 +93,7 @@ namespace DOW
                         }
                         break;
                     default:
-                        if (it.Current.Key.Contains("SKILL"))
+                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
                         {
                             Skills.Add(it.Current.Value);
                         }

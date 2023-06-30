@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Globalization;
+using UnityEngine;
 
 namespace DOW
 {
@@ -23,8 +24,8 @@ namespace DOW
 
         public CharacterCardData(Dictionary<string, string> data) : base(data) { }
 
-        public string Label { get; protected set; } = "";
         public string Character { get; protected set; } = "";
+        public string Level { get; protected set; } = "1";
         public float Hp { get; protected set; } = 0f;
         public float Damage { get; protected set; } = 0f;
         public float Recovery { get; protected set; } = 0f;
@@ -50,14 +51,15 @@ namespace DOW
                 switch (it.Current.Key)
                 {
                     case "KEY"://상위에서 UniqueKeyName으로 동작중.
-                        // CSV last line is usually empty.
+                        // ignoring last line that is empty in csv file
                         if (it.Current.Value == "")
-                        {
                             return;
-                        }
                         break;
                     case "CHAR_KEY":
                         Character = it.Current.Value;
+                        break;
+                    case "LEVEL":
+                        Level = it.Current.Value;
                         break;
                     case "HP_BASE":
                         Hp = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
@@ -84,7 +86,7 @@ namespace DOW
                         LevelingDescription = it.Current.Value;
                         break;
                     default:
-                        if (it.Current.Key.Contains("SKILL"))
+                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
                         {
                             Skills.Add(it.Current.Value);
                         }
