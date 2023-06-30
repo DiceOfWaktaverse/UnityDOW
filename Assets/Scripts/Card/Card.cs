@@ -9,6 +9,7 @@ namespace DOW
         public string Key { get; protected set; } = "";
         public string CardPack { get; protected set; } = "";
         public eCardType Type { get; protected set; } = eCardType.NONE;
+        public string Illust { get; protected set; } = "9999";
         public string Label { get; protected set; } = "";
         public string Description { get; protected set; } = "";
         public List<Tag> Tags { get; protected set; } = new List<Tag>();
@@ -19,13 +20,15 @@ namespace DOW
             Key = datum.GetKey();
             CardPack = datum.CardPack;
             Type = datum.Type;
+            Illust = datum.Illust;
             Label = datum.Label;
             Description = datum.Description;
-            Debug.Log(datum.Tags.Count);
+
             for (int i = 0; i < datum.Tags.Count; i++)
             {
                 Tags.Add(new Tag(datum.Tags[i]));
             }
+
             Restrictions = datum.Restrictions;
         }
 
@@ -61,10 +64,7 @@ namespace DOW
                 default:
                     throw new System.Exception("Invalid card type");
             }
-
             return card;
         }
-
-
     }
 }

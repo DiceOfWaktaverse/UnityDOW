@@ -16,7 +16,6 @@ namespace DOW
 
         public Skill(string key) {
             SkillData datum = SkillData.Get(key);
-            Debug.Log(datum.ToString());
             Key = key;
             Label = datum.Label;
             Type = datum.Type;

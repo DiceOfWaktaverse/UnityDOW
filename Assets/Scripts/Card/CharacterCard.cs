@@ -32,5 +32,12 @@ namespace DOW {
             LevelingDescription = characterCardDatum.LevelingDescription;
             Skills = characterCardDatum.Skills.Select(x => new Skill(x)).ToList();
         }
+
+        public override string ToString()
+        {
+            string str = "";
+            str += Key + "(" + Type + "): " + Label + " " + Level;
+            return str;
+        }
     }
 }

@@ -12,6 +12,7 @@ namespace DOW
 		POPUP = START,
 		DATA,
 		SOUND,
+		ILLUST,
 
 		MAX
     }

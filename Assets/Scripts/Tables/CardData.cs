@@ -44,6 +44,7 @@ namespace DOW
 
         public string CardPack { get; protected set; } = "";
         public eCardType Type { get; protected set; } = eCardType.NONE;
+        public string Illust { get; protected set; } = "9999";
         public string Label { get; protected set; } = "";
         public string Description { get; protected set; } = "";
         public List<string> Tags { get; protected set; } = new List<string>();
@@ -75,6 +76,10 @@ namespace DOW
                             Type = type;
                         else
                             Type = eCardType.NONE;
+                        break;
+                    case "ILLUST":
+                        if (it.Current.Value == "") break;
+                        Illust = it.Current.Value;
                         break;
                     case "LABEL":
                         Label = it.Current.Value;

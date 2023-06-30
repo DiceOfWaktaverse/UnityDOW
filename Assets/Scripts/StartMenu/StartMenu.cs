@@ -1,10 +1,5 @@
-using DOW;
-using System.Collections;
-using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
-using UnityEngine.SceneManagement;
-using UnityEngine.Video;
 
 namespace DOW
 {
@@ -26,9 +21,6 @@ namespace DOW
             UIManager.Instance.InitUI(eSceneType.MAIN_MENU);
             startMenuStateMachine.StateInit();
             this.EventStartListening();
-
-            string a = TableManager.GetTable<CardTable>().ToString();
-            Debug.Log(a);
         }
 
         void OnDestroy()
@@ -89,11 +81,11 @@ namespace DOW
 
         public static void OnClickExit()
         {
-#if UNITY_EDITOR
+            #if UNITY_EDITOR
             EditorApplication.ExitPlaymode();
-#else
+            #else
             Application.Quit();
-#endif
+            #endif
         }
     }
 }

@@ -60,10 +60,7 @@ namespace DOW
             List<string> cardNoList = new List<string>();
             for (int i = 0; i < currentCount; ++i)
             {
-                Debug.Log("cardPool.Count: " + cardPool.Count);
                 int cardKeyIndex = Random.Range(0, cardPool.Count);
-                Debug.Log("cardKeyIndex: " + cardKeyIndex);
-                Debug.Log("cardKeyIndex: " + cardPool[cardKeyIndex]);
                 cardList[i].GetComponent<CardUI>().LoadCardData(cardPool[cardKeyIndex]);
             }
         }
