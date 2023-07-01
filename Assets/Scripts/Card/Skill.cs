@@ -24,6 +24,25 @@ namespace DOW
             Trigger = datum.Trigger;
             Summon = datum.Summon;
         }
+
+        public string DescriptionText(Card card) {
+
+            if (card is CharacterCard characterCard) {
+
+                string replacedSummonDescription = SummonDescription
+                    .Replace("SKILL_FACTOR", characterCard.SkillFactor.ToString())
+                    .Replace("EFFECT_FACTOR", characterCard.EffectFactor.ToString())
+                    .Replace("RECOVERY_FACTOR", characterCard.RecoveryFactor.ToString())
+                    .Replace("DEFENCE_FACTOR", characterCard.DefenceFactor.ToString());
+
+                if (Type.Contains(eSkillType.DICE)) {
+                    return TriggerDescription + " " + replacedSummonDescription;
+                } 
+            }
+
+            return TriggerDescription + " " + SummonDescription;
+        }
+
     }
 
 }

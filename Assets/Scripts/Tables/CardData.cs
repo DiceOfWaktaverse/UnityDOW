@@ -12,6 +12,7 @@ namespace DOW
         INST,
         ITEM,
         FIELD,
+        ENEMY,
         MAX
     }
 
@@ -49,6 +50,7 @@ namespace DOW
         public string Description { get; protected set; } = "";
         public List<string> Tags { get; protected set; } = new List<string>();
         public List<eRestriction> Restrictions { get; protected set; } = new List<eRestriction>();
+        public List<string> Skills { get; protected set; } = new List<string>();
 
         public override void Init()
         {
@@ -78,8 +80,8 @@ namespace DOW
                             Type = eCardType.NONE;
                         break;
                     case "ILLUST":
-                        if (it.Current.Value == "") break;
-                        Illust = it.Current.Value;
+                        if (it.Current.Value == "") Illust = "9999";
+                        else Illust = it.Current.Value;
                         break;
                     case "LABEL":
                         Label = it.Current.Value;
@@ -99,6 +101,10 @@ namespace DOW
                             if (Enum.TryParse<eRestriction>(fragment[i], out restriction))
                                 Restrictions.Add(restriction);
                         }
+                        break;
+                    default:
+                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
+                            Skills.Add(it.Current.Value);
                         break;
                 }
             }

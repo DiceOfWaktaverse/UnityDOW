@@ -22,7 +22,6 @@ namespace DOW
 
         public FieldCardData(Dictionary<string, string> data) : base(data) { }
 
-        public List<string> Skils { get; protected set; } = new List<string>();
         public override void Init()
         {
             base.Init();
@@ -42,10 +41,6 @@ namespace DOW
                         // ignoring last line that is empty in csv file
                         if (it.Current.Value == "")
                             return;
-                        break;
-                    default:
-                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
-                            Skils.Add(it.Current.Value);
                         break;
                 }
             }

@@ -83,15 +83,16 @@ namespace DOW
             var data = new Dictionary<string, List<Dictionary<string, string>>>();
             GetDesignData(data, "chapter");
             GetDesignData(data, "stage");
+            GetDesignData(data, "tag_base");
             GetDesignData(data, "card_pack");
             GetDesignData(data, "card_base");
-            GetDesignData(data, "tag_base");
+            GetDesignData(data, "leveling_base");
+            GetDesignData(data, "skill_base");
             GetDesignData(data, "char_base");
+            GetDesignData(data, "enemy_base");
             GetDesignData(data, "field_base");
             GetDesignData(data, "instant_base");
             GetDesignData(data, "item_base");
-            GetDesignData(data, "enemy_base");
-            GetDesignData(data, "skill_base");
 
             return data;
         }
@@ -121,14 +122,20 @@ namespace DOW
                     case "chapter":
                         TableManager.GetTable<ChapterTable>().SetTable(data);
                         break;
+                    case "tag_base":
+                        TableManager.GetTable<TagTable>().SetTable(data);
+                        break;
                     case "card_pack":
                         TableManager.GetTable<CardPackTable>().SetTable(data);
                         break;
                     case "card_base":
                         TableManager.GetTable<CardTable>().SetTable(data);
                         break;
-                    case "tag_base":
-                        TableManager.GetTable<TagTable>().SetTable(data);
+                    case "leveling_base":
+                        TableManager.GetTable<LevelingTable>().SetTable(data);
+                        break;
+                    case "skill_base":
+                        TableManager.GetTable<SkillTable>().SetTable(data);
                         break;
                     case "char_base":
                         TableManager.GetTable<CharacterCardTable>().SetTable(data);
@@ -144,9 +151,6 @@ namespace DOW
                         break;
                     case "enemy_base":
                         TableManager.GetTable<EnemyTable>().SetTable(data);
-                        break;
-                    case "skill_base":
-                        TableManager.GetTable<SkillTable>().SetTable(data);
                         break;
                     default:
                         break;

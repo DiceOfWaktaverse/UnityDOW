@@ -25,5 +25,5 @@ MonoBehaviour:
   - item_base
   - skill_base
   - enemy_base
-  - 
+  - leveling_base
   ClassName: []

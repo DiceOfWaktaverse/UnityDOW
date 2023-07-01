@@ -12,6 +12,12 @@ namespace DOW
         public int MaxCardCount = 6;
 
         [SerializeField]
+        public int IncludeCharacterCardCount = 1;
+
+        [SerializeField, Range(1, 6)]
+        public int MinimumCardCount = 2;
+
+        [SerializeField]
         public GameObject CardLayout = null;
 
         [SerializeField]
@@ -22,7 +28,8 @@ namespace DOW
         private List<GameObject> cardList = new List<GameObject>();
         private bool initial = true;
 
-        private List<string> cardPool = null;
+        private List<string> characterCardPool = null;
+        private List<string> otherCardPool = null;
 
         void Start()
         {
@@ -35,7 +42,8 @@ namespace DOW
             }
             CardTemplate.SetActive(false);
 
-            cardPool = TableManager.GetTable<CardTable>().GetKey();
+            characterCardPool = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.CHAR });
+            otherCardPool = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.FIELD, eCardType.INST, eCardType.ITEM }, false);
             Random.InitState(System.DateTime.Now.Millisecond);
             CardMulligan();
             initial = false;
@@ -49,8 +57,10 @@ namespace DOW
             }
         }
 
-        public void CardMulligan() {
-            if (currentCount > 1 && !initial) {
+        public void CardMulligan()
+        {
+            if (currentCount > MinimumCardCount && !initial)
+            {
                 currentCount--;
                 cardList[currentCount].SetActive(false);
             }
@@ -58,10 +68,15 @@ namespace DOW
             // random select int
             // TODO: replace this with real logic, including Seeding
             List<string> cardNoList = new List<string>();
-            for (int i = 0; i < currentCount; ++i)
+            for (int i = 0, cardIndex = 0; i < currentCount; ++i)
             {
-                int cardKeyIndex = Random.Range(0, cardPool.Count);
-                cardList[i].GetComponent<CardUI>().LoadCardData(cardPool[cardKeyIndex]);
+                if (IncludeCharacterCardCount > i) {
+                    cardIndex = Random.Range(0, characterCardPool.Count);
+                    cardList[i].GetComponent<CardUI>().LoadCardData(characterCardPool[cardIndex]);
+                } else {
+                    cardIndex = Random.Range(0, otherCardPool.Count);
+                    cardList[i].GetComponent<CardUI>().LoadCardData(otherCardPool[cardIndex]);
+                }
             }
         }
     }

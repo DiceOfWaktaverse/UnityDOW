@@ -57,7 +57,7 @@ namespace DOW
             return datas;
         }
 
-        public List<string> GetKey()
+        public List<string> GetKeys()
         {
             return datas.Keys.ToList();
         }
