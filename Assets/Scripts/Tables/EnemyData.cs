@@ -1,5 +1,5 @@
 using System.Collections.Generic;
-using System.Globalization;
+using System.Linq;
 
 namespace DOW
 {
@@ -23,18 +23,8 @@ namespace DOW
 
         public EnemyData(Dictionary<string, string> data) : base(data) { }
 
-        public string Enemy { get; protected set; } = "";
-        public string Label { get; protected set; } = "";
-        public float Hp { get; protected set; } = 0f;
-        public float Damage { get; protected set; } = 0f;
-        public float Recovery { get; protected set; } = 0f;
-        public float Defence { get; protected set; } = 0f;
-        public float SkillFactor { get; protected set; } = 0f;
-        public float EffectFactor { get; protected set; } = 0f;
-        public float RecoveryFactor { get; protected set; } = 0f;
-        public float DefenceFactor { get; protected set; } = 0f;
-        public List<int> Pattern { get; protected set; } = new List<int>();
-        public List<string> Skills { get; protected set; } = new List<string>();
+        public string Card { get; protected set; } = "";
+        public List<string> Pattern { get; protected set; } = new List<string>();
 
         public override void Init()
         {
@@ -56,47 +46,13 @@ namespace DOW
                         if (it.Current.Value == "")
                             return;
                         break;
-                    case "ENEMY_KEY":
-                        Enemy = it.Current.Value;
-                        break;
-                    case "HP_BASE":
-                        Hp = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "DAMAGE":
-                        Damage = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "RECOVERY":
-                        Recovery = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "DEFENCE":
-                        Defence = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "SKILL_FACTOR":
-                        SkillFactor = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "EFFECT_FACTOR":
-                        EffectFactor = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "RECOVERY_FACTOR":
-                        RecoveryFactor = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
-                        break;
-                    case "DEFENCE_FACTOR":
-                        DefenceFactor = float.Parse(it.Current.Value, CultureInfo.InvariantCulture);
+                    case "CARD_KEY":
+                        Card = it.Current.Value;
                         break;
                     case "PATTERN":
                         if (it.Current.Value == "")
                             break;
-                        string[] fragmant = it.Current.Value.Split('|');
-                        for (int i = 0; i < fragmant.Length; i++)
-                        {
-                            Pattern.Add(int.Parse(fragmant[i]) - 1);
-                        }
-                        break;
-                    default:
-                        if (it.Current.Key.Contains("SKILL") && it.Current.Value != "")
-                        {
-                            Skills.Add(it.Current.Value);
-                        }
+                        Pattern.AddRange(it.Current.Value.Split('|').ToList());
                         break;
                 }
             }

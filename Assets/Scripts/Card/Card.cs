@@ -7,18 +7,19 @@ namespace DOW
     public class Card
     {
         public string Key { get; protected set; } = "";
-        public string CardPack { get; protected set; } = "";
+        public CardPack CardPack { get; protected set; } = null;
         public eCardType Type { get; protected set; } = eCardType.NONE;
         public string Illust { get; protected set; } = "9999";
         public string Label { get; protected set; } = "";
         public string Description { get; protected set; } = "";
         public List<Tag> Tags { get; protected set; } = new List<Tag>();
         public List<eRestriction> Restrictions { get; protected set; } = new List<eRestriction>();
+        public List<Skill> Skills { get; protected set; } = new List<Skill>();
 
         public Card(CardData datum)
         {
             Key = datum.GetKey();
-            CardPack = datum.CardPack;
+            CardPack = new CardPack(datum.CardPack);
             Type = datum.Type;
             Illust = datum.Illust;
             Label = datum.Label;
@@ -30,6 +31,7 @@ namespace DOW
             }
 
             Restrictions = datum.Restrictions;
+            Skills = datum.Skills.Select(x => new Skill(x)).ToList();
         }
 
         public override string ToString()
