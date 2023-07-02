@@ -67,6 +67,7 @@ namespace DOW
             instance.AddManager(typeof(TableManager), TableManager.Instance, false);
             instance.AddManager(typeof(PopupManager), PopupManager.Instance, false);
             instance.AddManager(typeof(UIManager), UIManager.Instance, false);
+            instance.AddManager(typeof(CardManager), CardManager.Instance, false);
             #endregion
 
             // initialize UserInfo

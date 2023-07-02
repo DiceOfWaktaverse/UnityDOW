@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 namespace DOW
 {
-    public class ChapterMap : MonoBehaviour
+    public class ChapterMap : MonoBehaviour, EventListenerBase
     {
         [SerializeField, Min(1)]
         public int CurrentStage = 1;
@@ -27,6 +27,18 @@ namespace DOW
 
         void Start()
         {
+            initUI();
+        }
+
+        void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                PopupManager.ClosePopup<ChapterMapPopup>();
+            }
+        }
+
+        private void initUI() {
             currentChapter = TableManager.GetTable<StageTable>().Get("" + CurrentStage).Chapter;
             chapterData = TableManager.GetTable<ChapterTable>().GetAllList();
 
@@ -82,12 +94,9 @@ namespace DOW
             Chevron.SetActive(false);
         }
 
-        void Update()
-        {
-            if (Input.GetKeyDown(KeyCode.Escape))
-            {
-                PopupManager.ClosePopup<ChapterMapPopup>();
-            }
+        public void OnClickClose() {
+            PopupManager.ClosePopup<ChapterMapPopup>();
+            EventManager.TriggerEvent(eBattleStageEventType.ChapterMapOnClose);
         }
     }
 }

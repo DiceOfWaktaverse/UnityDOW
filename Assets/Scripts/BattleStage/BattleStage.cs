@@ -4,12 +4,13 @@ using UnityEngine;
 
 namespace DOW
 {
-    public enum BattleStageEventType
+    public enum eBattleStageEventType
     {
-        InitialMulliganFinished,
+        MulliganOnClose,
+        ChapterMapOnClose,
     }
 
-    public class BattleStage : MonoBehaviour, EventListener<BattleStageEventType>
+    public class BattleStage : MonoBehaviour, EventListener<eBattleStageEventType>
     {
         private BattleStateMachine stateMachine = new BattleStateMachine();
 
@@ -30,12 +31,16 @@ namespace DOW
             this.EventStopListening();
         }
 
-       public void OnEvent(BattleStageEventType eventType)
+        public void OnEvent(eBattleStageEventType eventType)
         {
-            Debug.Log("InitialMulliganState OnEvent : " + eventType);
-            if (eventType == BattleStageEventType.InitialMulliganFinished)
+            switch (eventType)
             {
-                PopupManager.ClosePopup<MulliganPopup>();
+                case eBattleStageEventType.MulliganOnClose:
+                    stateMachine.ChangeState<ChapterInfoState>();
+                    break;
+                case eBattleStageEventType.ChapterMapOnClose:
+                    stateMachine.ChangeState<StartingState>();
+                    break;
             }
         }
 

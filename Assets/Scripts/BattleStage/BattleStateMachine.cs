@@ -31,6 +31,7 @@ namespace DOW
 
     public class InitialMulliganState : StateBase
     {
+
         public override bool OnEnter()
         {
             PopupManager.OpenPopup<MulliganPopup>("MulliganPopup");
@@ -52,7 +53,6 @@ namespace DOW
     {
         public override bool OnEnter()
         {
-            Debug.Log("ChapterInfoState OnEnter");
             PopupManager.OpenPopup<ChapterMapPopup>("ChapterMapPopup");
             return base.OnEnter();
         }
