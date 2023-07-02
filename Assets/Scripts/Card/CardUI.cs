@@ -64,7 +64,6 @@ namespace DOW
         public void LoadCardData(string key)
         {
             card = CardFactory.Create(key);
-            Debug.Log(card);
 
             LabelText.text = card.Label;
             KeyText.text = card.Key;

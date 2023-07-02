@@ -52,10 +52,11 @@ namespace DOW
         {
             var value = path switch
             {
+                eResourcePath.PREFABS => "Prefabs",
                 eResourcePath.POPUP => "Prefabs/Popup",
+                eResourcePath.ILLUST => "Prefabs/Illust",
                 eResourcePath.DATA => "Data",
                 eResourcePath.SOUND => "Sound",
-                eResourcePath.ILLUST => "Prefabs/Illust",
                 _ => ""
             };
 

@@ -13,6 +13,7 @@ namespace DOW
 		DATA,
 		SOUND,
 		ILLUST,
+		PREFABS,
 
 		MAX
     }
