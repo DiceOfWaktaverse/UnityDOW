@@ -4,11 +4,14 @@ using UnityEngine;
 
 namespace DOW
 {
+
+
     public class BattleStateMachine : SimpleStateMachine<StateBase>
     {
         public override void SetState()
         {
-            AddState(new StartingState());
+            AddState(new InitialMulliganState());
+            AddState(new ChapterInfoState());
             AddState(new EventState());
             AddState(new BattleStartState());
             AddState(new BattleUserTurnStartState());
@@ -21,12 +24,54 @@ namespace DOW
             AddState(new BattleEndState());
 
             // Set Initial State
-            ChangeState<StartingState>();
+            ChangeState<InitialMulliganState>();
         }
 
     }
 
-    public class StartingState : StateBase
+    public class InitialMulliganState : StateBase
+    {
+
+        public override bool OnEnter()
+        {
+            PopupManager.OpenPopup<MulliganPopup>("MulliganPopup");
+            return base.OnEnter();
+        }
+
+        public override bool Update(float dt)
+        {
+            return base.Update(dt);
+        }
+
+        public override bool OnExit()
+        {
+            return base.OnExit();
+        }
+    }
+
+    public class ChapterInfoState : StateBase
+    {
+        public override bool OnEnter()
+        {
+            PopupManager.OpenPopup<ChapterMapPopup>("ChapterMapPopup");
+            return base.OnEnter();
+        }
+
+        public override bool Update(float dt)
+        {
+            return base.Update(dt);
+        }
+
+        public override bool OnExit()
+        {
+            return base.OnExit();
+        }
+
+    }
+
+
+
+    public class EventState : StateBase
     {
         public override bool OnEnter()
         {
@@ -44,7 +89,8 @@ namespace DOW
         }
     }
 
-    public class EventState : StateBase
+
+    public class StartingState : StateBase
     {
         public override bool OnEnter()
         {
@@ -116,7 +162,7 @@ namespace DOW
         }
     }
 
-    public class BattleUserDiceRollState: BattleState
+    public class BattleUserDiceRollState : BattleState
     {
         public override bool OnEnter()
         {

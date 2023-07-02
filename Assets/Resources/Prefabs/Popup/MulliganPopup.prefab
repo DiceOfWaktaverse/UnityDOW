@@ -219,7 +219,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0, b: 0, a: 0.78431374}
+  m_Color: {r: 0, g: 0, b: 0, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -728,9 +728,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 11500000, guid: 5498c581554e5422395bad599adb7020, type: 3}
-        m_TargetAssemblyTypeName: DOW.StartMenu, Assembly-CSharp
-        m_MethodName: 
+      - m_Target: {fileID: 7600239141187126782}
+        m_TargetAssemblyTypeName: DOW.Mulligan, Assembly-CSharp
+        m_MethodName: EndMulligan
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -825,8 +825,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MaxCardCount: 6
+  IncludeCharacterCardCount: 1
+  MinimumCardCount: 2
   CardLayout: {fileID: 5330618516126540935}
   CardTemplate: {fileID: 1459855945348282208, guid: f7084db0cb1ce42de8b6015b888894cc, type: 3}
+  MulliganButton: {fileID: 0}
 --- !u!1 &7291055156396699219
 GameObject:
   m_ObjectHideFlags: 0

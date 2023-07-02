@@ -11,9 +11,7 @@ namespace DOW
 
         public CardPack(string key)
         {
-            Debug.Log(key);
             CardPackData datum = TableManager.GetTable<CardPackTable>().Get(key);
-            Debug.Log(datum);
             Key = key;
             Label = datum.Label;
         }

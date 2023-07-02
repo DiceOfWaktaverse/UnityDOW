@@ -15,7 +15,8 @@ namespace DOW
             AddState(new MainMenuState());
 
             // Set Initial State
-            ChangeState<LoadingSplashState>();
+            // TODO: 지금 테스트하느라 임시로 바로 메인메뉴 가도록 해놓음
+            ChangeState<MainMenuState>();
         }
     }
 

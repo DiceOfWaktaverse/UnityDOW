@@ -9,6 +9,7 @@ namespace DOW
         StartSplashFinished,
         DifficultySelected,
     }
+
     public class StartMenu : MonoBehaviour, EventListener<StartMenuEventType>
     {
         [SerializeField]
