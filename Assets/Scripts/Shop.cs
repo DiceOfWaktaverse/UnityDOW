@@ -5,31 +5,19 @@ using UnityEngine;
 
 namespace DOW
 {
-    public class DumyCardData
-    {
-        public int cardId;
-        public int cardCost;
-
-        public DumyCardData(int cardId, int cardCost)
-        {
-            this.cardId = cardId;
-            this.cardCost = cardCost;
-        }
-    }
-
     public static class ShopData
     {
         //deck으로 되어있는경우 cardDeck_1_Cost에서 통합적인 cost를 사용하고
-        public static Stack<DumyCardData> cardDeck_1 = new Stack<DumyCardData>();
-        public static Stack<DumyCardData> cardDeck_2 = new Stack<DumyCardData>();
+        public static List<string> cardDeck_1 = new List<string>();
+        public static List<string> cardDeck_2 = new List<string>();
 
         //card인 경우 card 자체의 cost를 가져와 사용한다
-        public static DumyCardData card_1 = null;
-        public static DumyCardData card_2 = null;
-        public static DumyCardData card_3 = null;
+        public static List<GameObject> cardList = new List<GameObject>();
 
         public static int cardDeck_1_Cost = 1;
         public static int cardDeck_2_Cost = 1 ;
+
+        public readonly static int CardCost = 3; 
 
         //임시로 사용중인 플레잉어 재화
         public static int coin;
@@ -38,50 +26,86 @@ namespace DOW
 
     public class Shop : MonoBehaviour 
     {
-        private void Start()
+        public const int MaxCardCount = 3;
+
+        [SerializeField]
+        public GameObject CardTemplate = null;
+
+        [SerializeField]
+        public GameObject cardDeck1Layout;
+        [SerializeField]
+        public GameObject cardDeck2Layout;
+
+        [SerializeField]
+        public GameObject card1Layout;
+        [SerializeField]
+        public GameObject card2Layout;
+        [SerializeField]
+        public GameObject card3Layout;
+
+        private List<GameObject> cardLayoutList = new List<GameObject>();
+
+        private List<string> cardDeckPool = null;
+        private List<string> cardPool = null;
+
+        private void Awake()
         {
-            changeProduct();
+            cardLayoutList.Add(card1Layout);
+            cardLayoutList.Add(card2Layout);
+            cardLayoutList.Add(card3Layout);
+
+            setCardLayout();
         }
 
-        public static void buyCard(int num)
+        private void Start()
         {
-            if (num == 1)
-            {
-                if(ShopData.card_1 != null && ShopData.coin >= ShopData.card_1.cardCost)
-                {
-                    ShopData.coin -= ShopData.card_1.cardCost;
-                    Debug.Log("Card ID: " + ShopData.card_1.cardId);
 
-                    ShopData.card_1 = null;
-                }
-                else Debug.Log("can't buy or already sold");
+            changeProduct();
+
+
+            Random.InitState(System.DateTime.Now.Millisecond);
+
+            setCardInfo();
+            setCardDeckInfo();
+        }
+
+        public void setCardLayout()
+        {
+            for (int i = 0; i < MaxCardCount; i++)
+            {
+                ShopData.cardList.Add(Instantiate(CardTemplate, cardLayoutList[i].transform));
             }
-            else if (num == 2)
-            {
-                if(ShopData.card_2 != null && ShopData.coin >= ShopData.card_2.cardCost)
-                {
-                    ShopData.coin -= ShopData.card_2.cardCost;
-                    Debug.Log("Card ID: " + ShopData.card_2.cardId);
+            Debug.Log("setcardlayout");
+            CardTemplate.SetActive(false);
+        }
 
-                    ShopData.card_2 = null;
-                }
-                else Debug.Log("can't buy or already sold");
+        public void setCardInfo()
+        {
+            cardPool = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.CHAR , eCardType.FIELD, eCardType.ITEM }, false);
+            for (int i = 0;i < MaxCardCount;i++)
+            {
+                cardLayoutList[i].SetActive(true);
+                int cardIndex = Random.Range(0, cardPool.Count);
+                ShopData.cardList[i].GetComponent<CardUI>().LoadCardData(cardPool[cardIndex]);
             }
-            else if (num == 3)
-            {
-                 if(ShopData.card_3 != null && ShopData.coin >= ShopData.card_3.cardCost)
-                 {
-                    ShopData.coin -= ShopData.card_3.cardCost;
-                    Debug.Log("Card ID: " + ShopData.card_3.cardId);
+        }
 
-                    ShopData.card_3 = null;
-                }
-                else Debug.Log("can't buy or already sold");
+        public void setCardDeckInfo()
+        {
+            ShopData.cardDeck_1 = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.CHAR , eCardType.FIELD, eCardType.INST ,eCardType.ITEM }, false);
+            ShopData.cardDeck_2 = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.CHAR , eCardType.FIELD, eCardType.INST ,eCardType.ITEM }, false);
+        }
+
+        public void buyCard(int num)
+        {
+            num -= 1;
+            if (ShopData.coin >= ShopData.CardCost)
+            {
+                ShopData.coin -= ShopData.CardCost;
+                cardLayoutList[num].gameObject.SetActive(false);
             }
             else
-            {
-                Debug.LogAssertion("Unsuitable card num");
-            }
+                Debug.Log("can't buy or already sold");
         }
 
         public static void buyCardDeck(int num)
@@ -90,8 +114,12 @@ namespace DOW
             {
                 if (ShopData.coin >= ShopData.cardDeck_1_Cost)
                 {
+                    int cardIndex = Random.Range(0, ShopData.cardDeck_1.Count);
                     ShopData.coin -= ShopData.cardDeck_1_Cost;
-                    Debug.Log("Card ID: " + ShopData.cardDeck_1.Pop().cardId + "Cost: " + ShopData.cardDeck_1_Cost);
+
+                    Debug.Log(ShopData.cardDeck_1[cardIndex]);
+                    ShopData.cardDeck_1.Remove(ShopData.cardDeck_1[cardIndex]);
+
                     ShopData.cardDeck_1_Cost += 2;
                 }
                 else Debug.Log("lack of coin");
@@ -100,8 +128,12 @@ namespace DOW
             {
                 if (ShopData.coin >= ShopData.cardDeck_2_Cost)
                 {
+                    int cardIndex = Random.Range(0, ShopData.cardDeck_2.Count);
                     ShopData.coin -= ShopData.cardDeck_2_Cost;
-                    Debug.Log("Card ID: " + ShopData.cardDeck_2.Pop().cardId + "Cost: " + ShopData.cardDeck_2_Cost);
+                    
+                    Debug.Log(ShopData.cardDeck_2[cardIndex]);
+                    ShopData.cardDeck_2.Remove(ShopData.cardDeck_2[cardIndex]);
+
                     ShopData.cardDeck_2_Cost += 2;
                 }
                 else Debug.Log("lack of coin");
@@ -120,19 +152,10 @@ namespace DOW
         }
 
         //우선 random으로 만들어둠
-        public static void changeProduct()
+        public void changeProduct()
         {
-            ShopData.cardDeck_1.Clear();
-            for (int i = 0; i < 30; i++)
-                ShopData.cardDeck_1.Push(new DumyCardData(i, Random.Range(1, 15)));
-
-            ShopData.cardDeck_2.Clear();
-            for (int i = 0; i < 30; i++)
-                ShopData.cardDeck_2.Push(new DumyCardData(30 + i, Random.Range(1, 15)));
-
-            ShopData.card_1 = new DumyCardData(Random.Range(1,60),Random.Range(1,15));
-            ShopData.card_2 = new DumyCardData(Random.Range(1,60),Random.Range(1,15));
-            ShopData.card_3 = new DumyCardData(Random.Range(1,60),Random.Range(1,15));
+            setCardInfo();
+            setCardDeckInfo();
         }
 
         public static void getCoin()
