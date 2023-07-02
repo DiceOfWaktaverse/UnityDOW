@@ -45,7 +45,7 @@ KEY,설명(무시되는 데이터),LABEL,TYPE,TRIGGER_DESCRIPTION,SUMMON_DESCRIP
 44,1팩 즉발 카드 스킬,,,[즉발],"[우왁굳] 카드 획득, 다음 턴에 모든 아군 침묵",INSTANT NULL,ADD_HAND(PK_WAKGOOD_CHAR_5) AND
 45,1팩 즉발 카드 스킬,,,[즉발],"상대를 둘 골라 침묵, 공격력 -20",INSTANT NULL,SELECT_ENEMY(1) NULL THEN SELECT_ENEMY(2) NULL THEN GIVE_DEBUF(BLACKOUT(1)) $1 THEN GIVE_DEBUF(BLACKOUT(1)) $2 THEN ADD_DAMAGE_ONCE(-20) $1 THEN ADD_DAMAGE_ONCE(-20) $2
 46,1팩 필드 카드 스킬,,,필드에 [우왁굳] 카드 존재,필드 위 모든 [잔디의 지배자]에 속한 캐릭터의 공격력이 이 전투가 끝날 때 까지 10 증가,PASSIVE_TURN_START GTE(COUNT_FIELD_BY_KEY|1),
-47,1팩 필드 카드 스킬,,,없음,"한 턴에 한 번, 패에 [블록] 카드 추가",,
+47,1팩 필드 카드 스킬,,,한 턴에 한번,패에 [블록] 카드 추가,,
 48,1팩 필드 카드 스킬,,,패에 [블록] 카드가 3장 이상,패의 [블록] 카드를 전부 폐기. [마인크래프트] 태그 카드 하나를 무작위로 획득,,
 49,1팩 필드 카드 스킬,,,내 턴 종료,"70% 확률로 [컨텐츠] 카드를, 30% 확률로 [촬영] 카드 한 장을 획득.",,
 50,1팩 아이템 카드 스킬,,,,다음 한 턴 동안 아군의 공격력이 20 감소합니다. 적 전체에게 25의 피해를 입히고 50% 확률로 기절시킵니다.,,
