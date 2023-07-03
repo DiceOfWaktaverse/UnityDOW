@@ -102,7 +102,15 @@ namespace DOW
 
         public void EndMulligan()
         {
-            // TODO: save selected card list to userInfo
+            for (int i = 0, slot = 0; i < selectedCardList.Count; i++)
+            {
+                if (selectedCardList[i] is CharacterCard characterCard)
+                {
+                    UserInfo.Instance.GetInfo<CardInfo>().AddCharacter(eSlotType.SLOT1 + slot++, characterCard);
+                } else {
+                    UserInfo.Instance.GetInfo<CardInfo>().AddHand(selectedCardList[i]);
+                }
+            }
 
             PopupManager.ClosePopup<MulliganPopup>();
             EventManager.TriggerEvent(eBattleStageEventType.MulliganOnClose);
