@@ -13,6 +13,7 @@ namespace DOW
 
         //card인 경우 card 자체의 cost를 가져와 사용한다
         public static List<GameObject> cardList = new List<GameObject>();
+        public static List<Card> cardListCard = new List<Card>();
 
         public static int cardDeck_1_Cost = 1;
         public static int cardDeck_2_Cost = 1 ;
@@ -28,7 +29,6 @@ namespace DOW
     {
         public const int MaxCardCount = 3;
 
-        [SerializeField]
         public GameObject CardTemplate = null;
 
         [SerializeField]
@@ -50,23 +50,20 @@ namespace DOW
 
         private void Awake()
         {
+            CardTemplate = ResourceManager.GetResource<GameObject>(eResourcePath.PREFABS, "Card");
+
             cardLayoutList.Add(card1Layout);
             cardLayoutList.Add(card2Layout);
             cardLayoutList.Add(card3Layout);
 
             setCardLayout();
+            Random.InitState(System.DateTime.Now.Millisecond);
         }
 
         private void Start()
         {
-
-            changeProduct();
-
-
-            Random.InitState(System.DateTime.Now.Millisecond);
-
-            setCardInfo();
             setCardDeckInfo();
+            setCardInfo();
         }
 
         public void setCardLayout()
@@ -74,8 +71,8 @@ namespace DOW
             for (int i = 0; i < MaxCardCount; i++)
             {
                 ShopData.cardList.Add(Instantiate(CardTemplate, cardLayoutList[i].transform));
+                ShopData.cardListCard.Add(null);
             }
-            Debug.Log("setcardlayout");
             CardTemplate.SetActive(false);
         }
 
@@ -84,8 +81,9 @@ namespace DOW
             cardPool = TableManager.GetTable<CardTable>().GetKeys(new List<eCardType> { eCardType.CHAR , eCardType.FIELD, eCardType.ITEM }, false);
             for (int i = 0;i < MaxCardCount;i++)
             {
-                cardLayoutList[i].SetActive(true);
+                ShopData.cardList[i].SetActive(true);   
                 int cardIndex = Random.Range(0, cardPool.Count);
+                ShopData.cardListCard[i] = CardManager.Get(cardPool[cardIndex]);
                 ShopData.cardList[i].GetComponent<CardUI>().LoadCardData(cardPool[cardIndex]);
             }
         }
@@ -103,6 +101,10 @@ namespace DOW
             {
                 ShopData.coin -= ShopData.CardCost;
                 cardLayoutList[num].gameObject.SetActive(false);
+                UserInfo.Instance.GetInfo<BattleInfo>().Hand.Add(ShopData.cardListCard[num]);
+
+                //Debug.Log(UserInfo.Instance.GetInfo<BattleInfo>().Hand[UserInfo.Instance.GetInfo<BattleInfo>().Hand.Count - 1]);
+                Debug.Log(UserInfo.Instance.GetInfo<BattleInfo>().Hand.Count);
             }
             else
                 Debug.Log("can't buy or already sold");
@@ -117,7 +119,7 @@ namespace DOW
                     int cardIndex = Random.Range(0, ShopData.cardDeck_1.Count);
                     ShopData.coin -= ShopData.cardDeck_1_Cost;
 
-                    Debug.Log(ShopData.cardDeck_1[cardIndex]);
+                    UserInfo.Instance.GetInfo<BattleInfo>().Hand.Add(CardManager.Get(ShopData.cardDeck_1[cardIndex]));
                     ShopData.cardDeck_1.Remove(ShopData.cardDeck_1[cardIndex]);
 
                     ShopData.cardDeck_1_Cost += 2;
@@ -131,7 +133,7 @@ namespace DOW
                     int cardIndex = Random.Range(0, ShopData.cardDeck_2.Count);
                     ShopData.coin -= ShopData.cardDeck_2_Cost;
                     
-                    Debug.Log(ShopData.cardDeck_2[cardIndex]);
+                    UserInfo.Instance.GetInfo<BattleInfo>().Hand.Add(CardManager.Get(ShopData.cardDeck_1[cardIndex]));
                     ShopData.cardDeck_2.Remove(ShopData.cardDeck_2[cardIndex]);
 
                     ShopData.cardDeck_2_Cost += 2;
@@ -149,13 +151,6 @@ namespace DOW
             ShopData.cardDeck_1_Cost = 1;
             ShopData.cardDeck_2_Cost = 1;
             Debug.Log("resetCost");
-        }
-
-        //우선 random으로 만들어둠
-        public void changeProduct()
-        {
-            setCardInfo();
-            setCardDeckInfo();
         }
 
         public static void getCoin()
