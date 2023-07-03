@@ -22,7 +22,9 @@ namespace DOW
     {
         public static UserInfo Instance { get { return DOWGameManager.Instance.User; } }
         public eDifficulty Difficulty { get; set; } = eDifficulty.NONE;
-        public int Progress { get; private set; } = -1;
+        public string Progress { get; private set; } = "";
+        public bool IsNewGame { get; set; } = true;
+
         [SerializeField]
         private Dictionary<eInfoType, IInfo> Infos { get; set; } = null;
         public void Initialize()
