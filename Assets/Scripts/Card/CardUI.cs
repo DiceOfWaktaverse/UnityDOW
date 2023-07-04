@@ -5,7 +5,7 @@ namespace DOW
 {
     public class CardUI : MonoBehaviour
     {
-        private Card card = null;
+        public Card card { get; set; } = null;
 
         // 컨트롤 해야 할 컴포넌트들
         private Text LevelText = null;
