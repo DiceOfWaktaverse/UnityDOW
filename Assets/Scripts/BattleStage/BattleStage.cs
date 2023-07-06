@@ -62,7 +62,10 @@ namespace DOW
         {
             ShopPopup.OpenPopup();
         }
-
+        public static void OnClickCoffin()
+        {
+            CoffinPopup.OpenPopup();
+        }
         public static void OnClickPreference()
         {
             BattlestageSettingPopup.OpenPopup();
