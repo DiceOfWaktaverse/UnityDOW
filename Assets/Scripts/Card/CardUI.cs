@@ -1,6 +1,10 @@
 using UnityEngine;
 using UnityEngine.UI;
 
+// 1. Table -> CSV데이터 받아온거 
+// 2. Manager -> 시스템이랑 짬뽕되서 뭔가 리소스를 받아온다던지, 팝업 매니저, 사운드 매니저
+// 3. UserInfo -> 
+
 namespace DOW
 {
     public class CardUI : MonoBehaviour
