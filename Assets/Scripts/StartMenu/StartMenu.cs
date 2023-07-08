@@ -77,7 +77,8 @@ namespace DOW
 
         public static void OnClickCredit()
         {
-            SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
+            // SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
+            ChooseCardPopup.OpenPopup();
         }
 
         public static void OnClickExit()
