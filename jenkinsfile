@@ -1,0 +1,43 @@
+pipeline {
+    agent any
+
+    environment {
+        UNITY_PATH = '/Applications/Unity/Hub/Editor/2021.3.23f1/Unity.app/Contents/MacOS/Unity'
+        BUILD_CLASS_PATH = 'JENKINS.JenkinsBuildProcessor.BuildGradlePCRelease'
+        DOW_DISCORD_WEBHOOK_URL = credentials('DOW_DISCORD_WEBHOOK_URL')
+        DOW_RELEASE_BRANCH = credentials('DOW_RELEASE_BRANCH')
+    }
+    
+    stages {
+        stage('Checkout') {
+            steps {
+                withCredentials([usernamePassword(credentialsId: '14f37158-0987-4901-8123-42095c5e077f', usernameVariable: 'GITHUB_USERNAME', passwordVariable: 'GITHUB_PASSWORD')]) {
+                    git credentialsId: '14f37158-0987-4901-8123-42095c5e077f', url: 'https://github.com/DiceOfWaktaverse/UnityDOW.git', branch: "${env.DOW_RELEASE_BRANCH}"
+                }
+            }
+        }
+        
+        stage('Build') {
+            agent {
+                label 'fernandoKimMacBook'
+            }
+            
+            steps {
+                script {
+                    sh "$UNITY_PATH -quit -batchmode -projectPath . -executeMethod $BUILD_CLASS_PATH -logFile result.log"
+                }
+            }
+            
+            post {
+                success {
+                    sh 'zip -r build.zip proj.pcwin'
+                    archiveArtifacts artifacts: 'build.zip', onlyIfSuccessful: true
+                }
+                cleanup {
+                    sh "./send-discord-notification.sh ${currentBuild.currentResult} ${currentBuild.duration} ${env.BUILD_URL} ${env.DOW_DISCORD_WEBHOOK_URL}"
+                    sh 'rm -rf build.zip proj.pcwin'
+                }
+            }
+        }
+    }
+}

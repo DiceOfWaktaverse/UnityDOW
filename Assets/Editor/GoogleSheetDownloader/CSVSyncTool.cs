@@ -247,6 +247,9 @@ public class CSVSyncTool : EditorWindow
 
             foreach (var row in values)
             {
+                if (row.Count < 1)
+                    continue;
+
                 for (int j = 0; j < dataCount; ++j)
                 {
                     if (row.Count > j)
@@ -279,9 +282,9 @@ public class CSVSyncTool : EditorWindow
             if (refreshInfo)
                 LoadCSVFileInfo();
         }
-        catch (GoogleApiException)
+        catch (GoogleApiException e)
         {
-            Debug.LogError($"시트 이름 확인 필요 : {sheetName}");
+            Debug.LogError($"시트 이름 확인 필요 : {sheetName} => {e.Message}");
             EditorUtility.ClearProgressBar();
         }
         catch (Exception)

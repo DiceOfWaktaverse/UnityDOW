@@ -14,7 +14,7 @@ namespace DOW
             else
                 datas.Clear();
         }
-        public abstract void SetTable(List<List<string>> jsonArray);
+        public abstract void SetTable(List<Dictionary<string, string>> array);
         public virtual void DataClear()
         {
             if (datas == null)
@@ -55,6 +55,11 @@ namespace DOW
         public Dictionary<string, T> GetAllDic()
         {
             return datas;
+        }
+
+        public List<string> GetKeys()
+        {
+            return datas.Keys.ToList();
         }
 
         protected virtual bool Add(T data)
@@ -101,6 +106,19 @@ namespace DOW
         public virtual bool ContainsKey(string key)
         {
             return datas.ContainsKey(key);
+        }
+
+        public override string ToString()
+        {
+            string str = "";
+            var it = datas.GetEnumerator();
+
+            while (it.MoveNext())
+            {
+                str += it.Current.Value.ToString() + "\n";
+            }
+
+            return str;
         }
     }
 }

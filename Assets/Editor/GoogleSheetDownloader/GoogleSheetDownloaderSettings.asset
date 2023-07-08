@@ -12,6 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0728dcdcf509a43468970b79d92f9488, type: 3}
   m_Name: GoogleSheetDownloaderSettings
   m_EditorClassIdentifier: 
-  DocumentID: 
-  SheetName: []
+  DocumentID: 1_xVVfNZV2wu-X9VlelMdDSKW-ifoLNLjpsF3pN-lOEU
+  SheetName:
+  - chapter
+  - stage
+  - card_pack
+  - tag_base
+  - card_base
+  - char_base
+  - instant_base
+  - field_base
+  - item_base
+  - skill_base
+  - enemy_base
+  - leveling_base
   ClassName: []
