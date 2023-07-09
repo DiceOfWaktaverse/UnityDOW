@@ -65,9 +65,10 @@ namespace DOW
             PreferencePopup.OpenPopup();
         }
 
-        public static void OnClickShop()
+        public static void OnClickContinue()
         {
-            MulliganPopup.OpenPopup();
+            //MulliganPopup.OpenPopup();
+            //이어하기 구현
         }
 
         public static void OnClickBook()
