@@ -39,5 +39,43 @@ namespace DOW
         public void LoadInfo()
         {
         }
+
+        public override string ToString() {
+            string str = "";
+            str += "Hand: ";
+            foreach (Card card in Hand) {
+                str += card.ToString() + ", ";
+            }
+            str += "\n";
+
+            str += "Character: ";
+            foreach (LevelingCard card in Character) {
+                str += card.ToString() + ", ";
+            }
+            str += "\n";
+
+            str += "Coffin: ";
+            foreach (Card card in Coffin) {
+                str += card.ToString() + ", ";
+            }
+            str += "\n";
+
+            str += "FriendlyField: ";
+            if (FriendlyField != null) {
+                str += FriendlyField.ToString();
+            }
+            str += "\n";
+
+            str += "EnemyField: ";
+            if (EnemyField != null) {
+                str += EnemyField.ToString();
+            }
+            str += "\n";
+
+            str += "BatlteSeed: " + BatlteSeed + "\n";
+            str += "Turn: " + Turn + "\n";
+
+            return str;
+        }
     }
 }
