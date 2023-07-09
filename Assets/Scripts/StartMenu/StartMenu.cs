@@ -17,9 +17,9 @@ namespace DOW
         public static StartMenuStateMachine startMenuStateMachine = new StartMenuStateMachine();
 
 
-        void Start()
+        void Awake()
         {
-            UIManager.Instance.InitUI(eSceneType.MAIN_MENU);
+            UIManager.Instance.InitUI(eSceneType.START_MENU);
             startMenuStateMachine.StateInit();
             this.EventStartListening();
         }
@@ -53,42 +53,6 @@ namespace DOW
                 SoundManager.Instance.PopBGM();
                 LoadingManager.Instance.LoadScene("BattleStage");
             }
-        }
-
-        public static void OnClickDifficulty()
-        {
-            DifficultyPopup.OpenPopup();
-        }
-
-        public static void OnClickPreference()
-        {
-            PreferencePopup.OpenPopup();
-        }
-
-        public static void OnClickContinue()
-        {
-            //MulliganPopup.OpenPopup();
-            //이어하기 구현
-        }
-
-        public static void OnClickBook()
-        {
-            CharacterCardGotchaPopup.OpenPopup();
-        }
-
-        public static void OnClickCredit()
-        {
-            // SystemPopup.OpenPopup("����", "���� ũ������ �������� �ʾҽ��ϴ�.", "Ȯ��");
-            ChooseCardPopup.OpenPopup();
-        }
-
-        public static void OnClickExit()
-        {
-            #if UNITY_EDITOR
-            EditorApplication.ExitPlaymode();
-            #else
-            Application.Quit();
-            #endif
         }
     }
 }

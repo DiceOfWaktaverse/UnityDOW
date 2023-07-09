@@ -8,7 +8,6 @@ namespace DOW
     public class BattleStageUI : UIObject
     {
         public override void InitializeUI(eSceneType targetType) {
-            Debug.Log("BattleStageUI InitializeUI");
             if (eSceneType.BATTLE_STAGE == targetType)
             {
                 curSceneType = targetType;

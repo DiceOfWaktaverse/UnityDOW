@@ -13,19 +13,18 @@ namespace DOW
     public class BattleStage : MonoBehaviour, EventListener<eBattleStageEventType>
     {
         private BattleStateMachine stateMachine;
-        private GameObject handLayout;
 
         void Awake()
         {
-            stateMachine = new BattleStateMachine(this);
-            stateMachine.StateInit();
-            this.EventStartListening();
-
-            handLayout = GameObject.Find("Interface/LowerPanel/Hand");
-
             // 배틀스테이지 UI로딩
             UIManager.Instance.InitUI(eSceneType.BATTLE_STAGE);
 
+            // 배틀 스테이지 스테이트 머신 초기화
+            stateMachine = new BattleStateMachine(this);
+            stateMachine.StateInit();
+
+            // 이벤트 리스너 등록
+            this.EventStartListening();
         }
 
         // 배틀 스테이지 업데이트에서 해야 할 일
