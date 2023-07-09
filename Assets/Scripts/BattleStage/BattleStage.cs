@@ -22,6 +22,10 @@ namespace DOW
             this.EventStartListening();
 
             handLayout = GameObject.Find("Interface/LowerPanel/Hand");
+
+            // 배틀스테이지 UI로딩
+            UIManager.Instance.InitUI(eSceneType.BATTLE_STAGE);
+
         }
 
         // 배틀 스테이지 업데이트에서 해야 할 일
@@ -56,24 +60,6 @@ namespace DOW
                     stateMachine.ChangeState<StartingState>();
                     break;
             }
-        }
-
-        public static void OnClickShop()
-        {
-            ShopPopup.OpenPopup();
-        }
-        public static void OnClickCoffin()
-        {
-            CoffinPopup.OpenPopup();
-        }
-        public static void OnClickPreference()
-        {
-            BattlestageSettingPopup.OpenPopup();
-        }
-
-        public static void OnClickTurnEnd()
-        {
-            BattleEndPopup.OpenPopup();
         }
     }
 }
