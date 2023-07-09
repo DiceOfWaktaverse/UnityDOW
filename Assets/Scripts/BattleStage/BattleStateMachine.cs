@@ -41,6 +41,9 @@ namespace DOW
     {
         public override bool OnEnter()
         {
+
+            // 유저인포 초기화
+
             return base.OnEnter();
         }
 
@@ -114,9 +117,7 @@ namespace DOW
         }
     }
 
-
-
-
+    // 배틀 스테이트의 베이스 스테이트, 사용하지 않는다. 배틀스테이트의 공통 정보를 여기에 정의하고 상속받아서 사용한다.
     public class BattleState : StateBase
     {
         public override bool OnEnter()
@@ -135,10 +136,14 @@ namespace DOW
         }
     }
 
+    // 배틀인포를 초기화 함, 유저인포를 로딩해야함
     public class BattleStartState : BattleState
     {
         public override bool OnEnter()
         {
+
+
+
             return base.OnEnter();
         }
 
