@@ -1,18 +1,11 @@
 using UnityEngine;
 using UnityEngine.UI;
-using UnityEngine.EventSystems;
-
-// 1. Table -> CSV데이터 받아온거 
-// 2. Manager -> 시스템이랑 짬뽕되서 뭔가 리소스를 받아온다던지, 팝업 매니저, 사운드 매니저
-// 3. UserInfo -> 
 
 namespace DOW
 {
-    public class CardUI : MonoBehaviour, IBeginDragHandler, IDragHandler, IEndDragHandler
+    public class CardUI : MonoBehaviour
     {
         public Card card { get; set; } = null;
-
-        public bool IsDraggable { get; set; } = false;
 
         // 컨트롤 해야 할 컴포넌트들
         private Text LevelText = null;
@@ -36,8 +29,6 @@ namespace DOW
         private GameObject DescriptionTemplate = null;
 
         private GameObject HpSlug = null;
-
-        private Transform parentTransform = null;
 
         void Awake()
         {
@@ -68,28 +59,6 @@ namespace DOW
         void Update()
         {
 
-        }
-
-        public void OnBeginDrag(PointerEventData eventData)
-        {
-            if (!IsDraggable) return;
-            Debug.Log("OnBeginDrag");
-            parentTransform = transform.parent;
-            transform.SetParent(transform.root);
-        }
-
-        public void OnDrag(PointerEventData eventData)
-        {
-            if (!IsDraggable) return;
-            Debug.Log("OnDrag");
-            transform.position = Input.mousePosition;
-        }
-
-        public void OnEndDrag(PointerEventData eventData)
-        {
-            if (!IsDraggable) return;
-            Debug.Log("OnEndDrag");
-            transform.SetParent(parentTransform);
         }
 
         public void LoadCardData(string key)

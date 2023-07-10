@@ -21,7 +21,6 @@ namespace DOW
             GameObject card = ResourceManager.GetResource<GameObject>(eResourcePath.PREFABS, "Card");
             while (hand.Count < MaxHandCount - 1) {
                 GameObject cardUI = Instantiate(card, handLayout.transform);
-                cardUI.GetComponent<CardUI>().IsDraggable = true; // 드래그 가능하게
                 cardUI.SetActive(false);
                 hand.Add(cardUI);
             }
