@@ -496,8 +496,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: buyCardDeck
         m_Mode: 3
         m_Arguments:
@@ -598,8 +598,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: buyCard
         m_Mode: 3
         m_Arguments:
@@ -860,8 +860,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: buyCard
         m_Mode: 3
         m_Arguments:
@@ -994,8 +994,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: getCoin
         m_Mode: 1
         m_Arguments:
@@ -1205,9 +1205,21 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
-        m_MethodName: changeProduct
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
+        m_MethodName: setCardInfo
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
+        m_MethodName: setCardDeckInfo
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1339,8 +1351,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: buyCardDeck
         m_Mode: 3
         m_Arguments:
@@ -1473,8 +1485,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: resetCost
         m_Mode: 1
         m_Arguments:
@@ -1735,8 +1747,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 7522077066750153790}
-        m_TargetAssemblyTypeName: DOW.Shop, Assembly-CSharp
+      - m_Target: {fileID: 4352977944563998038}
+        m_TargetAssemblyTypeName: DOW.ShopPopup, Assembly-CSharp
         m_MethodName: buyCard
         m_Mode: 3
         m_Arguments:
@@ -1758,7 +1770,6 @@ GameObject:
   - component: {fileID: 1196714744804631779}
   - component: {fileID: 4758015284718815547}
   - component: {fileID: 1004622568142796230}
-  - component: {fileID: 7522077066750153790}
   - component: {fileID: 4352977944563998038}
   m_Layer: 0
   m_Name: ShopPopup
@@ -1835,24 +1846,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &7522077066750153790
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8588088882104748873}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 853258af051c7754ea54892566e116e1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CardTemplate: {fileID: 1459855945348282208, guid: f7084db0cb1ce42de8b6015b888894cc, type: 3}
-  cardDeck1Layout: {fileID: 6299215699373065738}
-  cardDeck2Layout: {fileID: 2075471298882944234}
-  card1Layout: {fileID: 4448042161888368271}
-  card2Layout: {fileID: 8419102762595686640}
-  card3Layout: {fileID: 3867201964636515168}
 --- !u!114 &4352977944563998038
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1865,3 +1858,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0cc1c6b6d85f16245bd783d322132f8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CardTemplate: {fileID: 1459855945348282208, guid: f7084db0cb1ce42de8b6015b888894cc, type: 3}
+  cardDeck1Layout: {fileID: 6299215699373065738}
+  cardDeck2Layout: {fileID: 2075471298882944234}
+  card1Layout: {fileID: 4448042161888368271}
+  card2Layout: {fileID: 8419102762595686640}
+  card3Layout: {fileID: 3867201964636515168}

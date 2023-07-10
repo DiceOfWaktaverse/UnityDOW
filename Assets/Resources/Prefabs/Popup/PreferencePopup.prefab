@@ -86,7 +86,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3348363257872665965}
   - component: {fileID: 3348363257872665963}
-  - component: {fileID: 3348363257872665962}
   m_Layer: 5
   m_Name: slider_EffectVolume
   m_TagString: Untagged
@@ -168,8 +167,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3348363257872665962}
-        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
+      - m_Target: {fileID: 1374640323141893148}
+        m_TargetAssemblyTypeName: PreferencePopup, Assembly-CSharp
         m_MethodName: changeEffectVolume
         m_Mode: 1
         m_Arguments:
@@ -180,20 +179,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3348363257872665962
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348363257872665964}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd9bb23de5d2044b507791ef226eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 3348363257872665963}
-  volumeType: 2
 --- !u!1 &3348363258174163968
 GameObject:
   m_ObjectHideFlags: 0
@@ -893,7 +878,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3348363258868945495}
   - component: {fileID: 3348363258868945493}
-  - component: {fileID: 3348363258868945492}
   m_Layer: 5
   m_Name: slider_BgmVolume
   m_TagString: Untagged
@@ -975,8 +959,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3348363258868945492}
-        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
+      - m_Target: {fileID: 1374640323141893148}
+        m_TargetAssemblyTypeName: PreferencePopup, Assembly-CSharp
         m_MethodName: changeBgmVolume
         m_Mode: 1
         m_Arguments:
@@ -987,20 +971,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3348363258868945492
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348363258868945494}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd9bb23de5d2044b507791ef226eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 3348363258868945493}
-  volumeType: 1
 --- !u!1 &3348363259044226967
 GameObject:
   m_ObjectHideFlags: 0
@@ -1528,6 +1498,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6393e4dcff7bed840ba83c26b5b1c87e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  masterSlider: {fileID: 0}
+  bgmSlider: {fileID: 0}
+  effectSlider: {fileID: 0}
 --- !u!1 &3348363259535287522
 GameObject:
   m_ObjectHideFlags: 0
@@ -1614,7 +1587,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3348363259621106890}
   - component: {fileID: 3348363259621106888}
-  - component: {fileID: 3348363259621106891}
   m_Layer: 5
   m_Name: slider_MasterVolume
   m_TagString: Untagged
@@ -1696,8 +1668,8 @@ MonoBehaviour:
   m_OnValueChanged:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 3348363259621106891}
-        m_TargetAssemblyTypeName: SoundSlider, Assembly-CSharp
+      - m_Target: {fileID: 1374640323141893148}
+        m_TargetAssemblyTypeName: PreferencePopup, Assembly-CSharp
         m_MethodName: changeMasterVolume
         m_Mode: 1
         m_Arguments:
@@ -1708,20 +1680,6 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &3348363259621106891
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3348363259621106893}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fdd9bb23de5d2044b507791ef226eff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  slider: {fileID: 3348363259621106888}
-  volumeType: 0
 --- !u!1 &3348363259696356902
 GameObject:
   m_ObjectHideFlags: 0

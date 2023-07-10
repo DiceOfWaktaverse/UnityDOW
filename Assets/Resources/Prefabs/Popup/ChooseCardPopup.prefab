@@ -231,7 +231,6 @@ GameObject:
   m_Component:
   - component: {fileID: 5717635523479218346}
   - component: {fileID: 3865646994748132943}
-  - component: {fileID: 2870220586240534745}
   m_Layer: 5
   m_Name: ChooseCardPopup
   m_TagString: Untagged
@@ -270,17 +269,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9158215769e0f7844afc65b762b6c138, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &2870220586240534745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5717635523479218345}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2119c274d9c8ebc49bd0dc70f1bef94e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
