@@ -8,7 +8,8 @@ namespace DOW
         START,
 
         INTRO = START,
-        MAIN_MENU,
+        START_MENU,
+        BATTLE_STAGE,
 
         MAX
     }

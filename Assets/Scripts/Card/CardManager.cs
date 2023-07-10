@@ -24,4 +24,35 @@ namespace DOW
 
         }
     }
+
+    public static class CardFactory
+    {
+        public static Card Create(string key)
+        {
+            CardData datum = CardData.Get(key);
+            Card card = null;
+
+            if (datum == null)
+                throw new System.Exception("Invalid card key");
+
+            switch (datum.Type)
+            {
+                case eCardType.CHAR:
+                    card = new CharacterCard(datum);
+                    break;
+                case eCardType.FIELD:
+                    card = new FieldCard(datum);
+                    break;
+                case eCardType.INST:
+                    card = new InstantCard(datum);
+                    break;
+                case eCardType.ITEM:
+                    card = new ItemCard(datum);
+                    break;
+                default:
+                    throw new System.Exception("Invalid card type");
+            }
+            return card;
+        }
+    }
 }

@@ -4,24 +4,20 @@ using UnityEngine;
 
 namespace DOW
 {
-    public enum eBattleStageEventType
-    {
-        MulliganOnClose,
-        ChapterMapOnClose,
-    }
-
-    public class BattleStage : MonoBehaviour, EventListener<eBattleStageEventType>
+    public class BattleStage : MonoBehaviour
     {
         private BattleStateMachine stateMachine;
-        private GameObject handLayout;
+        private BattleStageUI battleStageUI;
 
         void Awake()
         {
+            // 배틀스테이지 UI로딩
+            UIManager.Instance.InitUI(eSceneType.BATTLE_STAGE);
+            battleStageUI = UIManager.Instance.Beacon.UIObjects.Find(x => x is BattleStageUI) as BattleStageUI;
+
+            // 배틀 스테이지 스테이트 머신 초기화
             stateMachine = new BattleStateMachine(this);
             stateMachine.StateInit();
-            this.EventStartListening();
-
-            handLayout = GameObject.Find("Interface/LowerPanel/Hand");
         }
 
         // 배틀 스테이지 업데이트에서 해야 할 일
@@ -30,50 +26,30 @@ namespace DOW
         // - 혹시 유저가 설정 창을 켜거나 쇼핑을 누르면 팝업을 띄움, 멈출지 말지는 아직 안정했음
         void Update()
         {
-            if (stateMachine.CurState != null)
-                stateMachine.CurState.Update(Time.deltaTime);
-        }
+            // 스테이트가 없으면 끝냄
+            if (stateMachine.CurState == null) return;
 
-        void OnDestroy()
-        {
-            this.EventStopListening();
-        }
+            // 현재 스테이트 업데이트를 실행하고 결과값을 받음
+            bool continueState = stateMachine.CurState.Update(Time.deltaTime);
 
-        public void OnEvent(eBattleStageEventType eventType)
-        {
-            switch (eventType)
-            {
-                case eBattleStageEventType.MulliganOnClose:
-                    stateMachine.ChangeState<ChapterInfoState>();
-                    var cards = UserInfo.Instance.GetInfo<CardInfo>().Hand;
-                    for (int i = 0; i < cards.Count; i++)
-                    {
-                        Debug.Log(cards[i]);
-                    }
+            // 결과값이 true면 별 다른 일 없이 계속된다
+            if (continueState == true) return;
 
-                    break;
-                case eBattleStageEventType.ChapterMapOnClose:
-                    stateMachine.ChangeState<StartingState>();
-                    break;
+            // 결과값이 false면 스테이트를 바꿔야 한다
+            if (stateMachine.CurState is StartingState) {
+                bool newGame = UserInfo.Instance.GetInfo<GameInfo>().IsNewGame;
+                if (newGame == true) stateMachine.ChangeState<InitialMulliganState>();
+                else stateMachine.ChangeState<ChapterInfoState>();
+            } else if (stateMachine.CurState is InitialMulliganState) {
+                stateMachine.ChangeState<ChapterInfoState>();
+            } else if (stateMachine.CurState is ChapterInfoState) {
+                stateMachine.ChangeState<BattleStartState>();
             }
+
         }
 
-        public static void OnClickShop()
-        {
-            ShopPopup.OpenPopup();
-        }
-        public static void OnClickCoffin()
-        {
-            CoffinPopup.OpenPopup();
-        }
-        public static void OnClickPreference()
-        {
-            BattlestageSettingPopup.OpenPopup();
-        }
+        void OnDestroy() { }
 
-        public static void OnClickTurnEnd()
-        {
-            BattleEndPopup.OpenPopup();
-        }
+        public BattleStageUI GetUI() { return battleStageUI; }
     }
 }
