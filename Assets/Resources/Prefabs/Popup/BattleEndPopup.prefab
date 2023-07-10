@@ -999,7 +999,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2086084542601567301}
   - component: {fileID: 4607024395259048096}
-  - component: {fileID: 1232068914741067006}
   m_Layer: 5
   m_Name: BattleEndPopup
   m_TagString: Untagged
@@ -1041,18 +1040,6 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: efa276437d7842c44aee00878d103abb, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &1232068914741067006
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6663727059307114049}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3d3027d0e688b86458c08a9bb1d15fc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   resultText: {fileID: 6177759686948739047}
