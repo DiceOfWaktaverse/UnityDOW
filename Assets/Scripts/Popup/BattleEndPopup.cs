@@ -29,14 +29,14 @@ namespace DOW
         {
             if (status == Status.Victory)
             {
-                resultText.text = "�¸�";
+                resultText.text = "승리";
                 PlaytimeText.GetComponent<RectTransform>().localPosition = new Vector2(0, 90);
                 RewardText.gameObject.SetActive(true);
                 RewardText.gameObject.SetActive(true);
             }
             else if (status == Status.Defeat)
             {
-                resultText.text = "�й�";
+                resultText.text = "패배";
                 PlaytimeText.GetComponent<RectTransform>().localPosition = new Vector2(0, 0);
                 RewardText.gameObject.SetActive(false);
                 RewardText.gameObject.SetActive(false);
