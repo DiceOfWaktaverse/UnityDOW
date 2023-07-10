@@ -5,20 +5,9 @@ using UnityEngine;
 namespace DOW
 {
     [System.Serializable]
-    public class BattleInfo : IInfo
+    public class BattleInfo : GameInfo
     {
-        // TODO: 최대 카드 갯수 정하기, 현재는 12개로 한함
-        public List<Card> Hand { get; protected set; } = new List<Card>();
-
-        // 5개 슬롯으로 한정함
-        public List<LevelingCard> Character { get; protected set; } = new List<LevelingCard>();
-        public List<Card> Coffin { get; protected set; } = new List<Card>();
-
-        public FieldCard FriendlyField { get; protected set; } = null;
         public FieldCard EnemyField { get; protected set; } = null;
-
-        // 전투에서 활용될 시드, 전투 시작시 생성되며 전투가 끝날때까지 유지된다.
-        public long BatlteSeed { get; private set; } = -1;
 
         public int Turn { get; private set; } = 0;
 
@@ -27,17 +16,38 @@ namespace DOW
             Initialize();
         }
 
-        public void Initialize()
+        // 배틀이 시작될 때 호출
+        public void ForkGameInfo()
         {
-            BatlteSeed = System.DateTime.Now.Ticks;
-        }
+            GameInfo gameInfo = UserInfo.Instance.GetInfo<GameInfo>();
 
-        public void SaveInfo()
-        {
+            Hand = gameInfo.Hand;
+            Character = gameInfo.Character;
+            Coffin = gameInfo.Coffin;
+            FriendlyField = gameInfo.FriendlyField;
+            ShopSeed = gameInfo.ShopSeed;
+            BatlteSeed = gameInfo.BatlteSeed;
         }
-
-        public void LoadInfo()
+        
+        // 배틀이 끝날 때 호출
+        public void MergeGameInfoAndClear() 
         {
+            GameInfo gameInfo = UserInfo.Instance.GetInfo<GameInfo>();
+
+            gameInfo.Hand = Hand;
+            gameInfo.Character = Character;
+            gameInfo.Coffin = Coffin;
+            gameInfo.FriendlyField = FriendlyField;
+            gameInfo.ShopSeed = ShopSeed;
+            gameInfo.BatlteSeed = BatlteSeed;
+
+            // clear
+            Hand = null;
+            Character = null;
+            Coffin = null;
+            FriendlyField = null;
+            ShopSeed = -1;
+            BatlteSeed = -1;
         }
     }
 }
