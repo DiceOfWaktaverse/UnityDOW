@@ -5,18 +5,15 @@ using UnityEngine;
 namespace DOW
 {
     [System.Serializable]
-    public class ShopInfo : IInfo
+    public class PersistentInfo : IInfo
     {
-        public long ShopSeed { get; private set; } = -1;
 
-        public ShopInfo()
+        public PersistentInfo()
         {
             Initialize();
         }
-
         public void Initialize()
         {
-            ShopSeed = System.DateTime.Now.Ticks;
         }
         public void SaveInfo()
         {

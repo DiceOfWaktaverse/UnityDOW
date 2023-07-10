@@ -27,7 +27,7 @@ namespace DOW
             AddState(new BattleEndState());
 
             // Set Initial State
-            ChangeState<InitialMulliganState>();
+            ChangeState<StartingState>();
         }
 
         public BattleStateMachine(BattleStage battleStage)
@@ -36,20 +36,23 @@ namespace DOW
         }
     }
 
-    // 유저 인포 초기화 하는 스테이지, 새로하기면 완전 초기화, 이어서 하기면 로드를 함
+    // 게임 인포 초기화 하는 스테이지, 새로하기면 완전 초기화, 이어서 하기면 로드를 함
     public class StartingState : StateBase
     {
+
         public override bool OnEnter()
         {
-
-            // 유저인포 초기화
 
             return base.OnEnter();
         }
 
         public override bool Update(float dt)
         {
-            return base.Update(dt);
+            GameInfo info = UserInfo.Instance.GetInfo<GameInfo>();
+            if (info.IsNewGame == true) info.InitializeGameInfo();
+            else info.LoadGameInfo();
+
+            return false;
         }
 
         public override bool OnExit()
@@ -61,15 +64,21 @@ namespace DOW
     // 게임이 처음 시작되고 멀리건을 하는 단계, 만약 유저인포의 progress가 0이면 처음 시작하는 것이고, 0이 아니면 이어서 하는 것이라서 이 스테이트 넘김 
     public class InitialMulliganState : StateBase
     {
-
+        MulliganPopup mulliganPopup;
         public override bool OnEnter()
         {
-            PopupManager.OpenPopup<MulliganPopup>("MulliganPopup");
+            mulliganPopup = PopupManager.OpenPopup<MulliganPopup>("MulliganPopup");
             return base.OnEnter();
         }
 
         public override bool Update(float dt)
         {
+            // 팝업이 닫히면 다음 스테이트로 넘어감
+            if(mulliganPopup.gameObject.activeSelf == false)
+            {
+                return false;
+            }
+
             return base.Update(dt);
         }
 
@@ -81,14 +90,21 @@ namespace DOW
 
     public class ChapterInfoState : StateBase
     {
+        ChapterMapPopup chapterMapPopup;
+
         public override bool OnEnter()
         {
-            PopupManager.OpenPopup<ChapterMapPopup>("ChapterMapPopup");
+            chapterMapPopup = PopupManager.OpenPopup<ChapterMapPopup>("ChapterMapPopup");
             return base.OnEnter();
         }
 
         public override bool Update(float dt)
         {
+            // 팝업이 닫히면 다음 스테이트로 넘어감
+            if(chapterMapPopup.gameObject.activeSelf == false)
+            {
+                return false;
+            }
             return base.Update(dt);
         }
 
@@ -136,14 +152,14 @@ namespace DOW
         }
     }
 
-    // 배틀인포를 초기화 함, 유저인포를 로딩해야함
+    // 배틀인포를 초기화 함, 게임인포를 로딩해야함
     public class BattleStartState : BattleState
     {
         public override bool OnEnter()
         {
-
-
-
+            UserInfo.Instance.GetInfo<BattleInfo>().ForkGameInfo();
+            string info = UserInfo.Instance.GetInfo<BattleInfo>().ToString();
+            Debug.Log(info);
             return base.OnEnter();
         }
 
@@ -283,6 +299,7 @@ namespace DOW
     {
         public override bool OnEnter()
         {
+            UserInfo.Instance.GetInfo<BattleInfo>().MergeGameInfoAndClear();
             return base.OnEnter();
         }
         public override bool Update(float dt)

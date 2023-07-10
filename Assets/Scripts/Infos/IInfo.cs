@@ -9,11 +9,14 @@ namespace DOW
         NONE = -1,
         START,
 
-        CARD = START,
+
+        PERSISTENT = START,
+        GAME,
         BATTLE,
-        GOODS,
-        SHOP,
-        HISTORY,
+
+
+        CARD,
+
 
         MAX
     }
