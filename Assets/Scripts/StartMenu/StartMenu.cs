@@ -32,10 +32,10 @@ namespace DOW
         public void Update()
         {
             // input deltatime to current state
-            if (startMenuStateMachine.CurState != null)
-            {
-                startMenuStateMachine.CurState.Update(Time.deltaTime);
-            }
+            if (startMenuStateMachine.CurState == null) return;
+            bool continueState = startMenuStateMachine.CurState.Update(Time.deltaTime);
+            if (continueState == true) return;
+
         }
 
         public void OnEvent(StartMenuEventType eventType)
