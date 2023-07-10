@@ -34,21 +34,25 @@ namespace DOW
         {
             // Get GameObject name of selected Button
             string difficulty = UnityEngine.EventSystems.EventSystem.current.currentSelectedGameObject.name;
-            eDifficulty selectedDifficulty = eDifficulty.EASY;
+
             if (difficulty == "EASY") {
-                selectedDifficulty = eDifficulty.EASY;
+                UserInfo.Instance.Difficulty = eDifficulty.EASY;
             } else if (difficulty == "HARD") {
-                selectedDifficulty = eDifficulty.HARD;
+                UserInfo.Instance.Difficulty = eDifficulty.HARD;
             } else if (difficulty == "CHAOS") {
-                selectedDifficulty = eDifficulty.CHAOS;
+                UserInfo.Instance.Difficulty = eDifficulty.CHAOS;
             } else if (difficulty == "GLITCH") {
-                selectedDifficulty = eDifficulty.GLITCH;
+                UserInfo.Instance.Difficulty = eDifficulty.GLITCH;
             } else if (difficulty == "CRASH") {
-                selectedDifficulty = eDifficulty.CRASH;
+                UserInfo.Instance.Difficulty = eDifficulty.CRASH;
             }
 
-            UserInfo.Instance.GetInfo<GameInfo>().Difficulty = selectedDifficulty;
             EventManager.TriggerEvent(StartMenuEventType.DifficultySelected);
+        }
+
+        public virtual void closePreference()
+        {
+            ClosePopup();
         }
     }
 }

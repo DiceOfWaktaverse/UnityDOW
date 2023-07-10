@@ -4,10 +4,26 @@ using UnityEngine;
 
 namespace DOW
 {
+    public enum eDifficulty
+    {
+        NONE = -1,
+        START,
+
+        EASY = START,
+        HARD,
+        CHAOS,
+        GLITCH,
+        CRASH,
+
+        MAX
+    }
     [System.Serializable]
     public class UserInfo : IInfo
     {
         public static UserInfo Instance { get { return DOWGameManager.Instance.User; } }
+        public eDifficulty Difficulty { get; set; } = eDifficulty.NONE;
+        public string Progress { get; private set; } = "";
+        public bool IsNewGame { get; set; } = true;
 
         [SerializeField]
         private Dictionary<eInfoType, IInfo> Infos { get; set; } = null;
@@ -16,10 +32,10 @@ namespace DOW
             if (Infos == null)
             {
                 Infos = new Dictionary<eInfoType, IInfo>();
-
-                AddInfo(eInfoType.PERSISTENT, new PersistentInfo());
-                AddInfo(eInfoType.GAME, new GameInfo());
+                AddInfo(eInfoType.CARD, new CardInfo());
                 AddInfo(eInfoType.BATTLE, new BattleInfo());
+                AddInfo(eInfoType.GOODS, new GoodsInfo());
+                AddInfo(eInfoType.SHOP, new ShopInfo());
             }
             else
             {
@@ -33,17 +49,21 @@ namespace DOW
         public T GetInfo<T>() where T : class, IInfo
         {
             var type = typeof(T);
-            if (type == typeof(PersistentInfo))
+            if (type == typeof(CardInfo))
             {
-                return Infos[eInfoType.PERSISTENT] as T;
-            }
-            else if (type == typeof(GameInfo))
-            {
-                return Infos[eInfoType.GAME] as T;
+                return Infos[eInfoType.CARD] as T;
             }
             else if (type == typeof(BattleInfo))
             {
                 return Infos[eInfoType.BATTLE] as T;
+            }
+            else if (type == typeof(GoodsInfo))
+            {
+                return Infos[eInfoType.GOODS] as T;
+            }
+            else if (type == typeof(ShopInfo))
+            {
+                return Infos[eInfoType.SHOP] as T;
             }
             return null;
         }

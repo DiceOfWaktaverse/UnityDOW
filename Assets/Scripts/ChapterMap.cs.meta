@@ -1,5 +1,9 @@
 fileFormatVersion: 2
+<<<<<<< Updated upstream:Assets/Scripts/ChapterMap.cs.meta
+guid: 5498c581554e5422395bad599adb7020
+=======
 guid: 2410cca76f1d43a4788e687b77f898c2
+>>>>>>> Stashed changes:Assets/Scripts/System/Spine/Controller/UISpineController.cs.meta
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2

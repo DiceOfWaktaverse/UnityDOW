@@ -123,8 +123,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 949892139682286858}
-        m_TargetAssemblyTypeName: DOW.MulliganPopup, Assembly-CSharp
+      - m_Target: {fileID: 7600239141187126782}
+        m_TargetAssemblyTypeName: DOW.Mulligan, Assembly-CSharp
         m_MethodName: CardMulligan
         m_Mode: 1
         m_Arguments:
@@ -728,8 +728,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 949892139682286858}
-        m_TargetAssemblyTypeName: DOW.MulliganPopup, Assembly-CSharp
+      - m_Target: {fileID: 7600239141187126782}
+        m_TargetAssemblyTypeName: DOW.Mulligan, Assembly-CSharp
         m_MethodName: EndMulligan
         m_Mode: 1
         m_Arguments:
@@ -771,6 +771,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5717635523479218346}
   - component: {fileID: 949892139682286858}
+  - component: {fileID: 7600239141187126782}
   m_Layer: 5
   m_Name: MulliganPopup
   m_TagString: Untagged
@@ -811,9 +812,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7b1b919db6d78428da03f0453fd099f1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &7600239141187126782
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5717635523479218345}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b4a5b69eab2404cae8a83f341df685be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
   MaxCardCount: 6
   IncludeCharacterCardCount: 1
   MinimumCardCount: 2
+  CardLayout: {fileID: 5330618516126540935}
+  CardTemplate: {fileID: 1459855945348282208, guid: f7084db0cb1ce42de8b6015b888894cc, type: 3}
+  MulliganButton: {fileID: 0}
 --- !u!1 &7291055156396699219
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using UnityEngine;
 
 namespace DOW
 {
@@ -29,28 +28,6 @@ namespace DOW
                 table = TableManager.GetTable<StageTable>();
 
             return table.Get(key);
-        }
-
-        public static StageData First() 
-        {
-            if (table == null)
-                table = TableManager.GetTable<StageTable>();
-
-            var keys = table.GetKeys();
-            if (keys.Count == 0) return null;
-            return table.Get(keys[0]);
-        }
-
-        public static StageData Next(StageData data)
-        {
-            if (table == null)
-                table = TableManager.GetTable<StageTable>();
-
-            // get next element
-            var keys = table.GetKeys();
-            int index = keys.IndexOf(data.GetKey());
-            if (index < keys.Count - 1) return table.Get(keys[index + 1]);
-            return null;
         }
 
         public StageData(Dictionary<string, string> data) : base(data) { }
