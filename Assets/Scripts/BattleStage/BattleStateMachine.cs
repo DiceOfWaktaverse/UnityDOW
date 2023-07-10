@@ -16,7 +16,7 @@ namespace DOW
             AddState(new InitialMulliganState());
             AddState(new ChapterInfoState());
             AddState(new EventState());
-            AddState(new BattleStartState());
+            AddState(new BattleStartState(battleStage));
             AddState(new BattleUserTurnStartState());
             AddState(new BattleUserDiceRollState());
             AddState(new BattleUserActionState());
@@ -155,11 +155,16 @@ namespace DOW
     // 배틀인포를 초기화 함, 게임인포를 로딩해야함
     public class BattleStartState : BattleState
     {
+        private BattleStage battleStage;
+
+        public BattleStartState(BattleStage battleStage) {
+            this.battleStage = battleStage;
+        }
+
         public override bool OnEnter()
         {
             UserInfo.Instance.GetInfo<BattleInfo>().ForkGameInfo();
-            string info = UserInfo.Instance.GetInfo<BattleInfo>().ToString();
-            Debug.Log(info);
+            battleStage.GetUI().LoadHand();
             return base.OnEnter();
         }
 

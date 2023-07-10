@@ -7,11 +7,13 @@ namespace DOW
     public class BattleStage : MonoBehaviour
     {
         private BattleStateMachine stateMachine;
+        private BattleStageUI battleStageUI;
 
         void Awake()
         {
             // 배틀스테이지 UI로딩
             UIManager.Instance.InitUI(eSceneType.BATTLE_STAGE);
+            battleStageUI = UIManager.Instance.Beacon.UIObjects.Find(x => x is BattleStageUI) as BattleStageUI;
 
             // 배틀 스테이지 스테이트 머신 초기화
             stateMachine = new BattleStateMachine(this);
@@ -43,8 +45,11 @@ namespace DOW
             } else if (stateMachine.CurState is ChapterInfoState) {
                 stateMachine.ChangeState<BattleStartState>();
             }
+
         }
 
         void OnDestroy() { }
+
+        public BattleStageUI GetUI() { return battleStageUI; }
     }
 }
