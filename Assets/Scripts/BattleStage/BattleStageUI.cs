@@ -21,11 +21,10 @@ namespace DOW
             GameObject card = ResourceManager.GetResource<GameObject>(eResourcePath.PREFABS, "Card");
             while (hand.Count < MaxHandCount - 1) {
                 GameObject cardUI = Instantiate(card, handLayout.transform);
+                cardUI.GetComponent<CardUI>().IsDraggable = true; // 드래그 가능하게
                 cardUI.SetActive(false);
                 hand.Add(cardUI);
             }
-
-            LoadHand();
         }
 
         public override void InitializeUI(eSceneType targetType) {
@@ -50,6 +49,7 @@ namespace DOW
             List<Card> curHand = UserInfo.Instance.GetInfo<BattleInfo>().Hand;
             
             for (int i = 0; i < curHand.Count; i++) {
+                Debug.Log(curHand[i]);
                 hand[i].SetActive(true);
                 hand[i].GetComponent<CardUI>().LoadCardData(curHand[i]);
             }

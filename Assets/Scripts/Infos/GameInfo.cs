@@ -65,7 +65,7 @@ namespace DOW
         }
 
         public void InitializeGameInfo() {
-            Debug.Log("InitializeGameInfo");
+            Progress = StageData.First().GetKey();
             ShopSeed = System.DateTime.Now.Ticks;
             BatlteSeed = System.DateTime.Now.Ticks + 1000; // setting some offset
             ShopIndex = 0;
@@ -113,6 +113,9 @@ namespace DOW
                 str += FriendlyField.ToString();
             }
             str += "\n";
+
+            // progress
+            str += "Progress: " + Progress + "\n";
 
             str += "BatlteSeed: " + BatlteSeed + "\n";
             str += "ShopSeed: " + ShopSeed + "\n";
