@@ -52,6 +52,8 @@ namespace DOW
         public long ShopSeed { get; set; } = -1;
         public int ShopIndex { get; set; } = -1;
         public long BatlteSeed { get; set; } = -1;
+        public long DiceSeed { get; set; } = -1;
+        public int DiceCount { get; set; } = 0;
         public int BattleIndex { get; set; } = -1;
 
 
