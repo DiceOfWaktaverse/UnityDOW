@@ -18,8 +18,11 @@ namespace DOW
         public FieldCard EnemyField { get; protected set; } = null;
 
         // 전투에서 활용될 시드, 전투 시작시 생성되며 전투가 끝날때까지 유지된다.
-        public long BatlteSeed { get; private set; } = -1;
+        public long BattleSeed { get; private set; } = -1;
 
+        public long DiceSeed {get; private set;} = -1;
+
+        public int DiceCount { get; set; } = 0;
         public int Turn { get; private set; } = 0;
 
         public BattleInfo()
@@ -29,7 +32,8 @@ namespace DOW
 
         public void Initialize()
         {
-            BatlteSeed = System.DateTime.Now.Ticks;
+            BattleSeed = (int)System.DateTime.Now.Ticks;
+            DiceSeed = (int)System.DateTime.Now.Ticks;
         }
 
         public void SaveInfo()

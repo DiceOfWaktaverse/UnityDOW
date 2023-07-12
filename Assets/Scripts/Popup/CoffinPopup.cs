@@ -15,7 +15,7 @@ namespace DOW
 
         private List<GameObject> cardList = new List<GameObject>();
         private List<Card> cardListCard = new List<Card>();
-        //테스트용
+        //테스트용 카드풀
         private List<string> cardPool = null;
         private void Awake()
         {

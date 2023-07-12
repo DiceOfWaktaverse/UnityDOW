@@ -66,6 +66,10 @@ namespace DOW
         {
             CoffinPopup.OpenPopup();
         }
+        public static void OnClickDice()
+        {
+            DicePopup.OpenPopup();
+        }
         public static void OnClickPreference()
         {
             BattlestageSettingPopup.OpenPopup();
