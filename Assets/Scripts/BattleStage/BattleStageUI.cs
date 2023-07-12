@@ -72,6 +72,10 @@ namespace DOW
             BattleEndPopup.OpenPopup();
         }
 
+        public static void OnClickDice()
+        {
+            DicePopup.OpenPopup();
+        }
         public override void RefreshUI() {
 
         }
